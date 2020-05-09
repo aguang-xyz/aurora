@@ -1,0 +1,57 @@
+{
+  "name": "aurora",
+  "description": "A lightweight markdown editor.",
+  "version": "0.0.1",
+  "license": "MIT",
+  "author": {
+    "name": "Guangrui Wang",
+    "email": "aguang.xyz@gmail.com"
+  },
+  "homepage": "https://github.com/aguang-xyz/aurora",
+  "repository": "https://github.com/aguang-xyz/aurora",
+  "bugs": {
+    "url": "https://github.com/aguang-xyz/aurora/issues"
+  },
+  "scripts": {
+    "dev": "electron-webpack dev",
+    "dist": "yarn compile && electron-builder"
+  },
+  "dependencies": {
+    "codemirror": "^5.53.2",
+    "highlight.js": "^10.0.2",
+    "katex": "^0.11.1",
+    "marked": "^1.0.0",
+    "normalize.css": "^8.0.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-html-parser": "^2.0.2",
+    "react-json-view": "^1.19.1",
+    "react-latex": "^1.6.0",
+    "react-markdown": "^4.3.1",
+    "remark-math": "^2.0.1",
+    "source-map-support": "^0.5.16",
+    "viz.js": "^2.1.2"
+  },
+  "devDependencies": {
+    "@babel/preset-react": "^7.9.4",
+    "electron": "8.2.0",
+    "electron-builder": "^22.4.1",
+    "electron-webpack": "^2.8.2",
+    "webpack": "~4.42.1"
+  },
+  "build": {
+    "appId": "xyz.aguang.editor.aurora",
+    "compression": "maximum",
+    "directories": {
+      "buildResources": "resources"
+    },
+    "linux": {
+      "category": "Office",
+      "target": [
+        "AppImage",
+        "deb",
+        "rpm"
+      ]
+    }
+  }
+}
