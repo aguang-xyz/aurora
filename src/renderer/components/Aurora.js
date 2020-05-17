@@ -4,10 +4,12 @@ import Path from 'path';
 import IpcEvent from '../../ipc/IpcEvent';
 import IpcProxy from '../../ipc/IpcProxy';
 
-import './MarkdownEditor.css';
+import styles from '../styles/Aurora.css';
 
 import MdEditor from './MdEditor';
 import MdViewer from './MdViewer';
+
+import ReactDOMServer from 'react-dom/server';
 
 class MarkdownEditor extends React.Component {
 
@@ -23,6 +25,8 @@ class MarkdownEditor extends React.Component {
       editingContent: '',
 
       saved: true,
+
+      theme: 'light',
     };
 
     this.mdEditorRef = React.createRef();
@@ -82,11 +86,11 @@ class MarkdownEditor extends React.Component {
 
       console.log(`Event: GET_EDITOR_STATUS`)
 
-      const { path, savedContent, editingContent, saved } = this.state;
+      const { path, savedContent, editingContent, saved, theme } = this.state;
 
       IpcProxy.send(IpcEvent.GET_EDITOR_STATUS_REPLY, {
 
-        path, savedContent, editingContent, saved,
+        path, savedContent, editingContent, saved, theme
       });
     });
 
@@ -151,6 +155,7 @@ class MarkdownEditor extends React.Component {
           <MdViewer
             path={this.state.path}
             content={this.state.editingContent}
+            theme={this.state.theme}
           />
         </div>
       </div>

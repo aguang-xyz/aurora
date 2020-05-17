@@ -1,7 +1,8 @@
 # ![](./resources/icons/64x64.png) Aurora `v1.0.0`
 
-**Aurora** is a lightweight markdown editor.
+**[Aurora](https://github.com/aguang-xyz/aurora)** is a lightweight markdown editor.
 
+***
 ## Features
 
 ### Mathjax
@@ -164,6 +165,7 @@ digraph finite_state_machine {
 }
 ```
 
+***
 ## Development Scripts
 
 ```bash

@@ -9,11 +9,9 @@ import Url from 'url';
 
 import 'highlight.js/styles/solarized-dark.css'
 import 'katex/dist/katex.css';
+import styles from '../styles/MdViewer.css';
 
 import VizViewer from './VizViewer';
-
-import '../libs/Darkdown.css';
-
 
 class MdViewer extends React.Component {
 
@@ -92,13 +90,16 @@ class MdViewer extends React.Component {
     );
   }
 
+  getProps(key) {
+
+    return (window.mdViewer) ? window.mdViewer[key] : this.props[key];
+  }
+
   renderImage(alt, src) {
 
-    console.log(alt, this.props.path, src);
+    if (this.getProps('path')) {
 
-    if (this.props.path) {
-
-      src = Url.resolve('file://' + this.props.path, src);
+      src = Url.resolve('file://' + this.getProps('path'), src);
 
       console.log('resolve: ', src);
     }
@@ -112,7 +113,7 @@ class MdViewer extends React.Component {
 
     return (
       <ReactMarkdown
-        source={this.props.content}
+        source={this.getProps('content')}
         plugins={[RemarkMath]}
         renderers={{
 

@@ -1,12 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
 import 'normalize.css/normalize.css';
+import Aurora from './components/Aurora';
 
-import MarkdownEditor from './components/MarkdownEditor';
-
-const root = document.createElement('div');
-
-document.body.appendChild(root);
-
-ReactDOM.render(<MarkdownEditor />, root);
+ReactDOM.render(<Aurora />, document.getElementById('app'));

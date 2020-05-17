@@ -1,6 +1,6 @@
 import { app, shell } from 'electron';
-
 import { promises as Fs } from 'fs';
+import Path from 'path';
 
 import IpcEvent from '../../ipc/IpcEvent';
 import IpcProxy from '../../ipc/IpcProxy';
@@ -11,12 +11,12 @@ import {
 
   confirmToSave,
   choosePathToSave,
+  choosePathToSaveHtml,
   choosePathToOpen
 
 } from './Dialogs';
 
 import packageInfo from '../../../package.json';
-
 
 const getEditorStatus = () =>
 
@@ -29,7 +29,6 @@ const getEditorStatus = () =>
 
     IpcProxy.send(IpcEvent.GET_EDITOR_STATUS);
   });
-
 
 async function confirmSavedOrIgnored() {
 
@@ -190,4 +189,43 @@ export const reportIssue = () => {
 export const checkUpdate = () => {
 
   shell.openExternal(packageInfo.homepage + '/releases');
+};
+
+async function getHtml() {
+
+  const { path, editingContent, theme } = await getEditorStatus();
+
+  const js = await Fs.readFile(
+    Path.join(__static, '/renderer.js'), 'utf8');
+
+  const css = await Fs.readFile(
+    Path.join(__static, '/styles.css'), 'utf8');
+
+  return `
+    <!DOCTYPE html>
+      <html>
+        <head>
+          <meta charset="utf-8">
+          <style>${css}</style>
+        </head>
+        <body>
+          <script>
+            window.mdViewer = {
+              theme: ${JSON.stringify(theme)},
+              content: ${JSON.stringify(editingContent)},
+              path: ${JSON.stringify(path)}
+            };
+          </script>
+          <script>${js}</script>
+        </body>
+      </html>
+    `;
+};
+
+export async function exportHtml() {
+
+  const html = await getHtml();
+  const path = await choosePathToSaveHtml();
+
+  await Fs.writeFile(path, html);
 };

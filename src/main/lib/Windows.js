@@ -16,6 +16,7 @@ import {
   openHomePage,
   reportIssue,
   checkUpdate,
+  exportHtml,
 
 } from './Commands';
 
@@ -35,12 +36,18 @@ const createMenu = () =>
       }, {
         label: 'Open Markdown... (Ctrl+O)',
         click: openMarkdown,
-      }, {
+      },{
         label: 'Save (Ctrl+S)',
         click: saveMarkdown,
       }, {
         label: 'Save As... (Shift+Ctrl+S)',
         click: saveAsMarkdown,
+      }, {
+        label: 'Export',
+        submenu: [{
+          label: 'Html',
+          click: exportHtml,
+        }],
       }, {
         label: 'Quit (Ctrl+Q)',
         click: quit,
