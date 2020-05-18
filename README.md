@@ -1,11 +1,14 @@
 # ![](./resources/icons/64x64.png) Aurora `v0.0.1`
 
+## Install.
 
-## Documents
+See [releases](https://github.com/aguang-xyz/aurora/releases).
 
-[See here](https://aguang-xyz.github.io/aurora/).
+## Documents.
 
-## Development Scripts
+See [documents](https://aguang-xyz.github.io/aurora/).
+
+## Development scripts.
 
 ```bash
 # run application in development mode
