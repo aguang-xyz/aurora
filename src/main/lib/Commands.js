@@ -1,6 +1,6 @@
 import { app, shell } from 'electron';
-
 import { promises as Fs } from 'fs';
+import Path from 'path';
 
 import IpcEvent from '../../ipc/IpcEvent';
 import IpcProxy from '../../ipc/IpcProxy';
@@ -11,12 +11,12 @@ import {
 
   confirmToSave,
   choosePathToSave,
+  choosePathToSaveHtml,
   choosePathToOpen
 
 } from './Dialogs';
 
 import packageInfo from '../../../package.json';
-
 
 const getEditorStatus = () =>
 
@@ -29,7 +29,6 @@ const getEditorStatus = () =>
 
     IpcProxy.send(IpcEvent.GET_EDITOR_STATUS);
   });
-
 
 async function confirmSavedOrIgnored() {
 
@@ -190,4 +189,43 @@ export const reportIssue = () => {
 export const checkUpdate = () => {
 
   shell.openExternal(packageInfo.homepage + '/releases');
+};
+
+async function getHtml() {
+
+  const { path, title, editingContent, theme } = await getEditorStatus();
+
+  return `
+		<!DOCTYPE html>
+		<html>
+			<head>
+				<meta charset="utf-8" />
+				<link rel="stylesheet" type="text/css" href="./doc/assets/main.css" />
+        <title>${title}</title>
+			</head>
+
+			<body>
+				<div id="app" />
+
+				<script>
+					const Electron = false;
+
+					window.AuroraProps = {
+            path: ${JSON.stringify(path)},
+						content: ${JSON.stringify(editingContent)},
+						theme: ${JSON.stringify(theme)}	
+					};
+				</script>
+				<script src="./doc/assets/main.js"></script>
+			</body>
+		</html>
+	`;
+};
+
+export async function exportHtml() {
+
+  const html = await getHtml();
+  const path = await choosePathToSaveHtml();
+
+  await Fs.writeFile(path, html);
 };

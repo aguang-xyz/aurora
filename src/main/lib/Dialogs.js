@@ -13,7 +13,6 @@ export async function confirmToSave(path) {
   })).response;
 };
 
-
 export async function choosePathToSave() {
 
   return (await dialog.showSaveDialog({
@@ -21,6 +20,18 @@ export async function choosePathToSave() {
     filters: [{
       name: 'Markdown',
       extensions: [ 'md' ],
+    }],
+
+  })).filePath;
+};
+
+export async function choosePathToSaveHtml() {
+
+  return (await dialog.showSaveDialog({
+
+    filters: [{
+      name: 'HTML',
+      extensions: [ 'html' ],
     }],
 
   })).filePath;

@@ -9,11 +9,9 @@ import Url from 'url';
 
 import 'highlight.js/styles/solarized-dark.css'
 import 'katex/dist/katex.css';
+import styles from '../styles/MdViewer.css';
 
 import VizViewer from './VizViewer';
-
-import '../libs/Darkdown.css';
-
 
 class MdViewer extends React.Component {
 
@@ -94,13 +92,9 @@ class MdViewer extends React.Component {
 
   renderImage(alt, src) {
 
-    console.log(alt, this.props.path, src);
-
     if (this.props.path) {
 
       src = Url.resolve('file://' + this.props.path, src);
-
-      console.log('resolve: ', src);
     }
 
     return (
