@@ -193,14 +193,17 @@ export const checkUpdate = () => {
 
 async function getHtml() {
 
-  const { path, title, editingContent, theme } = await getEditorStatus();
+  const { url, path, title, editingContent, theme } = await getEditorStatus();
+
+  const asset_url = 'https://aguang-xyz.github.io/aurora/assets';
 
   return `
 		<!DOCTYPE html>
 		<html>
 			<head>
 				<meta charset="utf-8" />
-				<link rel="stylesheet" type="text/css" href="./doc/assets/main.css" />
+				<link rel="stylesheet" type="text/css"
+          href="${asset_url}/main.css" />
         <title>${title}</title>
 			</head>
 
@@ -216,7 +219,7 @@ async function getHtml() {
 						theme: ${JSON.stringify(theme)}	
 					};
 				</script>
-				<script src="./doc/assets/main.js"></script>
+				<script src="${asset_url}/main.js"></script>
 			</body>
 		</html>
 	`;
