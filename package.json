@@ -1,7 +1,7 @@
 {
   "name": "aurora",
   "description": "A lightweight markdown editor.",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "license": "MIT",
   "author": {
     "name": "Guangrui Wang",
@@ -16,7 +16,8 @@
     "dev": "electron-webpack dev",
     "compile": "electron-webpack",
     "assets": "webpack --config ./conf/assets.config.js src/renderer/index.js --output ./docs/assets/main.js",
-    "dist": "yarn assets && yarn compile && electron-builder"
+    "build": "yarn compile",
+    "release": " yarn build && electron-builder"
   },
   "dependencies": {
     "codemirror": "^5.53.2",

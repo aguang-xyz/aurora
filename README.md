@@ -1,4 +1,4 @@
-# ![](./resources/icons/64x64.png) Aurora `v0.0.1`
+# ![](./resources/icons/64x64.png) Aurora `v0.0.2`
 
 ## Install.
 
