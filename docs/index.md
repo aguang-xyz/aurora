@@ -1,4 +1,4 @@
-# ![](https://github.com/aguang-xyz/aurora/raw/master/resources/icons/64x64.png) Aurora `v1.0.0`
+# ![](https://github.com/aguang-xyz/aurora/raw/master/resources/icons/64x64.png) Aurora `v0.0.1`
 
 **[Aurora](https://github.com/aguang-xyz/aurora)** is a lightweight markdown editor.
 
