@@ -1,5 +1,7 @@
 # ![](./resources/icons/64x64.png) Aurora `v0.0.2`
 
+**[Aurora](https://github.com/aguang-xyz/aurora)** is a lightweight markdown editor.
+
 ## Install.
 
 See [releases](https://github.com/aguang-xyz/aurora/releases).
