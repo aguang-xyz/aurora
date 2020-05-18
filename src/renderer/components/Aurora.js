@@ -9,8 +9,6 @@ import styles from '../styles/Aurora.css';
 import MdEditor from './MdEditor';
 import MdViewer from './MdViewer';
 
-import ReactDOMServer from 'react-dom/server';
-
 class MarkdownEditor extends React.Component {
 
   constructor(props) {
@@ -88,9 +86,11 @@ class MarkdownEditor extends React.Component {
 
       const { path, savedContent, editingContent, saved, theme } = this.state;
 
+      const title = this.getTitle();
+
       IpcProxy.send(IpcEvent.GET_EDITOR_STATUS_REPLY, {
 
-        path, savedContent, editingContent, saved, theme
+        path, savedContent, editingContent, saved, theme, title,
       });
     });
 
@@ -136,6 +136,19 @@ class MarkdownEditor extends React.Component {
   }
 
   render() {
+
+    if (window.AuroraProps) {
+
+      const { path, content, theme } = window.AuroraProps;
+
+      return (
+        <div className="Container">
+          <div className="RightPanel">
+            <MdViewer path={path} content={content} theme={theme} />
+          </div>
+        </div>
+      );
+    }
 
     return (
       <div className="Container">

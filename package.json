@@ -15,7 +15,8 @@
   "scripts": {
     "dev": "electron-webpack dev",
     "compile": "electron-webpack",
-    "dist": "yarn compile && electron-builder"
+    "assets": "webpack --config ./conf/assets.config.js src/renderer/index.js --output ./docs/assets/main.js",
+    "dist": "yarn assets && yarn compile && electron-builder"
   },
   "dependencies": {
     "codemirror": "^5.53.2",
@@ -41,6 +42,7 @@
     "electron": "8.2.0",
     "electron-builder": "^22.4.1",
     "electron-webpack": "^2.8.2",
+    "source-map-loader": "^0.2.4",
     "webpack": "~4.42.1",
     "webpack-build-notifier": "^2.0.0"
   },

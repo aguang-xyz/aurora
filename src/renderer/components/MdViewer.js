@@ -90,18 +90,11 @@ class MdViewer extends React.Component {
     );
   }
 
-  getProps(key) {
-
-    return (window.mdViewer) ? window.mdViewer[key] : this.props[key];
-  }
-
   renderImage(alt, src) {
 
-    if (this.getProps('path')) {
+    if (this.props.path) {
 
-      src = Url.resolve('file://' + this.getProps('path'), src);
-
-      console.log('resolve: ', src);
+      src = Url.resolve('file://' + this.props.path, src);
     }
 
     return (
@@ -113,7 +106,7 @@ class MdViewer extends React.Component {
 
     return (
       <ReactMarkdown
-        source={this.getProps('content')}
+        source={this.props.content}
         plugins={[RemarkMath]}
         renderers={{
 

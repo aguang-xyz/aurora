@@ -193,33 +193,33 @@ export const checkUpdate = () => {
 
 async function getHtml() {
 
-  const { path, editingContent, theme } = await getEditorStatus();
-
-  const js = await Fs.readFile(
-    Path.join(__static, '/renderer.js'), 'utf8');
-
-  const css = await Fs.readFile(
-    Path.join(__static, '/styles.css'), 'utf8');
+  const { path, title, editingContent, theme } = await getEditorStatus();
 
   return `
-    <!DOCTYPE html>
-      <html>
-        <head>
-          <meta charset="utf-8">
-          <style>${css}</style>
-        </head>
-        <body>
-          <script>
-            window.mdViewer = {
-              theme: ${JSON.stringify(theme)},
-              content: ${JSON.stringify(editingContent)},
-              path: ${JSON.stringify(path)}
-            };
-          </script>
-          <script>${js}</script>
-        </body>
-      </html>
-    `;
+		<!DOCTYPE html>
+		<html>
+			<head>
+				<meta charset="utf-8" />
+				<link rel="stylesheet" type="text/css" href="./doc/assets/main.css" />
+        <title>${title}</title>
+			</head>
+
+			<body>
+				<div id="app" />
+
+				<script>
+					const Electron = false;
+
+					window.AuroraProps = {
+            path: ${JSON.stringify(path)},
+						content: ${JSON.stringify(editingContent)},
+						theme: ${JSON.stringify(theme)}	
+					};
+				</script>
+				<script src="./doc/assets/main.js"></script>
+			</body>
+		</html>
+	`;
 };
 
 export async function exportHtml() {
