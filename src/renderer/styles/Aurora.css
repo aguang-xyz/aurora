@@ -36,6 +36,11 @@ html, body {
   padding: 1.5rem;
 }
 
+.Container .RightPanel img {
+
+  max-width: 100%;
+}
+
 .Container .RightPanel .VizBlock svg {
 
   max-width: 100%;
