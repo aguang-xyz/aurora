@@ -61,9 +61,11 @@
         "rpm",
         "snap"
       ],
-      "publish": {
-        "provider": ["github", "snapStore"],
-        "releaseType": "release",
+      "publish": [{
+        "provider": "github",
+        "releaseType": "release"
+      }, [
+        "provider": "snapStore",
         "channels": ["stable"]
       }
     }
