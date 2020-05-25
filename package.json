@@ -56,7 +56,6 @@
     "linux": {
       "category": "Productivity",
       "target": [
-        "AppImage",
         "snap"
       ],
       "publish": [{
