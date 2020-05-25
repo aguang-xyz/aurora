@@ -1,8 +1,18 @@
-# ![](./resources/icons/64x64.png) Aurora `v0.0.3`
+# ![](./resources/icons/64x64.png) Aurora Editor [![aurora-editor](https://snapcraft.io//aurora-editor/badge.svg)](https://snapcraft.io/aurora-editor)
 
-**[Aurora](https://github.com/aguang-xyz/aurora)** is a lightweight markdown editor.
+A lightweight markdown editor.
 
 ## Install.
+
+### For Linux Users.
+
+[![Get it from the Snap Store](https://snapcraft.io/static/images/badges/en/snap-store-black.svg)](https://snapcraft.io/aurora-editor)
+
+### For Mac Users.
+
+See [releases](https://github.com/aguang-xyz/aurora/releases).
+
+### For Windows Users.
 
 See [releases](https://github.com/aguang-xyz/aurora/releases).
 
