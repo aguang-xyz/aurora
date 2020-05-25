@@ -1,6 +1,8 @@
 name: Build/release
 
-on: push
+on:
+  create:
+    tags:
 
 jobs:
   release:
@@ -22,6 +24,7 @@ jobs:
       - name: Install Snapcraft
         uses: samuelmeuli/action-snapcraft@v1
 				with:
+          # Config for secret: snapcraft_token is required.
 					snapcraft_token: ${{ secrets.snapcraft_token }}
 
       - name: Build/release Electron app
@@ -31,7 +34,6 @@ jobs:
           # (No need to define this secret in the repo settings)
           github_token: ${{ secrets.github_token }}
 
-          # If the commit is tagged with a version (e.g. "v1.0.0"),
           # release the app after building
           release: ${{ startsWith(github.ref, 'refs/tags/v') }}
 
