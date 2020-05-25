@@ -60,7 +60,10 @@
         "deb",
         "rpm",
         "snap"
-      ]
+      ],
+      "publish": {
+        "channels": ["stable"]
+      }
     }
   }
 }
