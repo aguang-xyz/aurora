@@ -1,4 +1,4 @@
-# ![](./resources/icons/64x64.png) Aurora `v0.0.2`
+# ![](./resources/icons/64x64.png) Aurora `v0.0.3`
 
 **[Aurora](https://github.com/aguang-xyz/aurora)** is a lightweight markdown editor.
 
