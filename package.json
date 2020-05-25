@@ -64,10 +64,10 @@
       "publish": [{
         "provider": "github",
         "releaseType": "release"
-      }, [
+      }, {
         "provider": "snapStore",
         "channels": ["stable"]
-      }
+      }]
     }
   }
 }
