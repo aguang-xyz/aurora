@@ -1,14 +1,15 @@
-import React from 'react';
-import ReactMarkdown from 'react-markdown';
-import RemarkMath from 'remark-math';
-import Latex from 'react-latex';
-import ReactJson from 'react-json-view';
-import ReactHtmlParser from 'react-html-parser';
-import Highlight from 'highlight.js';
-import Url from 'url';
-
 import 'highlight.js/styles/solarized-dark.css'
 import 'katex/dist/katex.css';
+
+import Highlight from 'highlight.js';
+import React from 'react';
+import ReactHtmlParser from 'react-html-parser';
+import ReactJson from 'react-json-view';
+import Latex from 'react-latex';
+import ReactMarkdown from 'react-markdown';
+import RemarkMath from 'remark-math';
+import Url from 'url';
+
 import styles from '../styles/MdViewer.css';
 
 import VizViewer from './VizViewer';
@@ -18,9 +19,8 @@ class MdViewer extends React.Component {
   renderLatex(content) {
 
     return (
-      <Latex>
-        {content}
-      </Latex>
+        <Latex>{content}<
+            /Latex>
     );
   }
 
@@ -57,7 +57,7 @@ class MdViewer extends React.Component {
         <code className={`hljs ${lang}`}>
           {ReactHtmlParser(html)}
         </code>
-      </pre>
+        </pre>
     );
   }
 
@@ -72,21 +72,21 @@ class MdViewer extends React.Component {
           iconStyle="square"
           indentWidth={2}
           style={{ lineHeight: '15px', padding: 5, }}
-        />
-      );
-    } catch {
-
-      return this.renderCode(code, 'plaintext');
-    }
+        />);
   }
+  catch {
 
-  renderViz(lang, code) {
+    return this.renderCode(code, 'plaintext');
+  }
+}
+
+renderViz(lang, code) {
 
     return (
       <VizViewer
-        engine={lang}
-        content={code}
-      />
+    engine = {lang} content = {
+      code
+    } />
     );
   }
 
@@ -94,11 +94,12 @@ class MdViewer extends React.Component {
 
     if (this.props.path) {
 
-      src = Url.resolve('file://' + this.props.path, src);
-    }
+      src = Url.resolve('file:/ /' + this.props.path, src);
+}
 
-    return (
-      <img src={src} alt={alt} />
+return (<img src = {src} alt = {
+  alt
+} />
     );
   }
   
@@ -123,9 +124,8 @@ class MdViewer extends React.Component {
             this.renderImage(alt, src),
 
         }}
-      />
-    );
-  }
+      />);
+}
 }
 
 export default MdViewer;

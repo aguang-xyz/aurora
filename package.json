@@ -1,5 +1,5 @@
 {
-  "name": "aurora",
+  "name": "aurora-editor",
   "description": "A lightweight markdown editor.",
   "version": "0.0.2",
   "license": "MIT",
@@ -7,10 +7,10 @@
     "name": "Guangrui Wang",
     "email": "aguang.xyz@gmail.com"
   },
-  "homepage": "https://github.com/aguang-xyz/aurora",
-  "repository": "https://github.com/aguang-xyz/aurora",
+  "homepage": "https://github.com/aguang-xyz/aurora-editor",
+  "repository": "https://github.com/aguang-xyz/aurora-editor",
   "bugs": {
-    "url": "https://github.com/aguang-xyz/aurora/issues"
+    "url": "https://github.com/aguang-xyz/aurora-editor/issues"
   },
   "scripts": {
     "dev": "electron-webpack dev",
@@ -54,11 +54,12 @@
       "buildResources": "resources"
     },
     "linux": {
-      "category": "Office",
+      "category": "Productivity",
       "target": [
         "AppImage",
         "deb",
-        "rpm"
+        "rpm",
+        "snap"
       ]
     }
   }

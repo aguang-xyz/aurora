@@ -1,38 +1,34 @@
-import { app, shell } from 'electron';
-import { promises as Fs } from 'fs';
+import {app, shell} from 'electron';
+import {promises as Fs} from 'fs';
 import Path from 'path';
 
+import packageInfo from '../../../package.json';
 import IpcEvent from '../../ipc/IpcEvent';
 import IpcProxy from '../../ipc/IpcProxy';
 
-import { currentWindow, createMainWindow } from './Windows';
-
 import {
-
-  confirmToSave,
-  choosePathToSave,
-  choosePathToSaveHtml,
   choosePathToOpen
 
-} from './Dialogs';
+  ,
+  choosePathToSave,
+  choosePathToSaveHtml,
 
-import packageInfo from '../../../package.json';
+  confirmToSave
+} from './Dialogs';
+import {createMainWindow, currentWindow} from './Windows';
 
 const getEditorStatus = () =>
 
-  new Promise((resolve, reject) => {
+    new Promise((resolve, reject) => {
+      IpcProxy.once(IpcEvent.GET_EDITOR_STATUS_REPLY,
+                    (_, editorStatus) => { resolve(editorStatus); });
 
-    IpcProxy.once(IpcEvent.GET_EDITOR_STATUS_REPLY, (_, editorStatus) => {
-
-      resolve(editorStatus);
+      IpcProxy.send(IpcEvent.GET_EDITOR_STATUS);
     });
-
-    IpcProxy.send(IpcEvent.GET_EDITOR_STATUS);
-  });
 
 async function confirmSavedOrIgnored() {
 
-  let { path, saved, editingContent } = await getEditorStatus();
+  let {path, saved, editingContent} = await getEditorStatus();
 
   if (saved) {
 
@@ -70,17 +66,15 @@ async function confirmSavedOrIgnored() {
   }
 };
 
-
 export async function newMarkdown() {
 
   if (await confirmSavedOrIgnored()) {
 
-    IpcProxy.send(IpcEvent.SET_EDITOR_STATUS, { path: null, content: '' });
+    IpcProxy.send(IpcEvent.SET_EDITOR_STATUS, {path : null, content : ''});
   }
 };
 
 IpcProxy.on(IpcEvent.NEW_MARKDOWN, newMarkdown);
-
 
 export async function openMarkdown() {
 
@@ -94,17 +88,16 @@ export async function openMarkdown() {
 
       const content = await Fs.readFile(path, 'utf8');
 
-      IpcProxy.send(IpcEvent.SET_EDITOR_STATUS, { path, content });
+      IpcProxy.send(IpcEvent.SET_EDITOR_STATUS, {path, content});
     }
   }
 };
 
 IpcProxy.on(IpcEvent.OPEN_MARKDOWN, openMarkdown);
 
-
 export async function saveMarkdown() {
 
-  let { path, saved, editingContent } = await getEditorStatus();
+  let {path, saved, editingContent} = await getEditorStatus();
 
   if (!saved) {
 
@@ -114,19 +107,17 @@ export async function saveMarkdown() {
 
       await Fs.writeFile(path, editingContent, 'utf8');
 
-      IpcProxy.send(IpcEvent.SET_EDITOR_STATUS, {
-        path, content: editingContent
-      });
+      IpcProxy.send(IpcEvent.SET_EDITOR_STATUS,
+                    {path, content : editingContent});
     }
   }
 };
 
 IpcProxy.on(IpcEvent.SAVE_MARKDOWN, saveMarkdown);
 
-
 export async function saveAsMarkdown() {
 
-  const { editingContent } = await getEditorStatus();
+  const {editingContent} = await getEditorStatus();
 
   let path = await choosePathToSave();
 
@@ -134,14 +125,11 @@ export async function saveAsMarkdown() {
 
     await Fs.writeFile(path, editingContent, 'utf8');
 
-    IpcProxy.send(IpcEvent.SET_EDITOR_STATUS, {
-      path, content: editingContent
-    });
+    IpcProxy.send(IpcEvent.SET_EDITOR_STATUS, {path, content : editingContent});
   }
 };
 
 IpcProxy.on(IpcEvent.SAVE_AS_MARKDOWN, saveAsMarkdown);
-
 
 export async function quit() {
 
@@ -153,7 +141,6 @@ export async function quit() {
 
 IpcProxy.on(IpcEvent.QUIT, quit);
 
-
 export async function toggleFullScreen() {
 
   const win = currentWindow();
@@ -164,38 +151,26 @@ export async function toggleFullScreen() {
   }
 };
 
-
 IpcProxy.on(IpcEvent.TOGGLE_FULLSCREEN, toggleFullScreen);
 
 IpcProxy.on(IpcEvent.SET_FULLSCREEN, (_, on) => {
-
   const win = currentWindow();
 
   win.setFullScreen(false);
 });
 
+export const openHomePage = () => { shell.openExternal(packageInfo.homepage);};
 
-export const openHomePage = () => {
+export const reportIssue = () => { shell.openExternal(packageInfo.bugs.url);};
 
-  shell.openExternal(packageInfo.homepage);
-};
-
-
-export const reportIssue = () => {
-
-  shell.openExternal(packageInfo.bugs.url);
-};
-
-export const checkUpdate = () => {
-
-  shell.openExternal(packageInfo.homepage + '/releases');
-};
+export const checkUpdate =
+    () => { shell.openExternal(packageInfo.homepage + '/releases');};
 
 async function getHtml() {
 
-  const { url, path, title, editingContent, theme } = await getEditorStatus();
+  const {url, path, title, editingContent, theme} = await getEditorStatus();
 
-  const asset_url = 'https://aguang-xyz.github.io/aurora/assets';
+  const asset_url = 'https://aguang-xyz.github.io/aurora-editor/assets';
 
   return `
 		<!DOCTYPE html>
@@ -215,8 +190,10 @@ async function getHtml() {
 
 					window.AuroraProps = {
             path: ${JSON.stringify(path)},
-						content: ${JSON.stringify(editingContent)},
-						theme: ${JSON.stringify(theme)}	
+						content: ${
+      JSON.stringify(editingContent)},
+						theme: ${
+      JSON.stringify(theme)}	
 					};
 				</script>
 				<script src="${asset_url}/main.js"></script>

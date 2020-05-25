@@ -1,28 +1,25 @@
-import React from 'react';
-
-import CodeMirror from 'codemirror/lib/codemirror';
-
 import 'codemirror/keymap/sublime';
-
 import 'codemirror/lib/codemirror.css';
 import 'codemirror/theme/solarized.css';
-
 import '../libs/MdEditorMode';
+
+import CodeMirror from 'codemirror/lib/codemirror';
+import React from 'react';
 
 const CM_OPTIONS = {
 
-  indentUnit: 2,
-  tabSize: 2,
-  indentWithTabs: false,
+  indentUnit : 2,
+  tabSize : 2,
+  indentWithTabs : false,
 
-  lineNumbers: true,
-  lineWrapping:  true,
-  theme: 'solarized dark',
+  lineNumbers : true,
+  lineWrapping : true,
+  theme : 'solarized dark',
 
-	scrollbarStyle: null,
-  mode: 'md-editor',
+  scrollbarStyle : null,
+  mode : 'md-editor',
 
-  keyMap: 'sublime',
+  keyMap : 'sublime',
 };
 
 class MdEditor extends React.Component {
@@ -39,10 +36,9 @@ class MdEditor extends React.Component {
     if (this.textareaRef.current) {
 
       this.codemirror =
-        CodeMirror.fromTextArea(this.textareaRef.current, CM_OPTIONS);
+          CodeMirror.fromTextArea(this.textareaRef.current, CM_OPTIONS);
 
       this.codemirror.on('change', x => {
-
         if (this.props.onChange) {
 
           this.props.onChange(x.getValue());
@@ -64,9 +60,8 @@ class MdEditor extends React.Component {
     return (
 
       <textarea
-        ref={this.textareaRef}
-        defaultValue={this.props.defaultValue}
-      />
+    ref = {this.textareaRef} defaultValue =
+    { this.props.defaultValue } />
     );
   }
 }

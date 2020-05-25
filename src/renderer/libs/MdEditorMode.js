@@ -1,5 +1,3 @@
-import CodeMirror from 'codemirror/lib/codemirror';
-
 // Language supports.
 import 'codemirror/mode/markdown/markdown';
 import 'codemirror/mode/fortran/fortran';
@@ -124,28 +122,26 @@ import 'codemirror/mode/htmlembedded/htmlembedded';
 import 'codemirror/mode/yacas/yacas';
 import 'codemirror/mode/cobol/cobol';
 import 'codemirror/mode/meta';
-
 // Multiplex Mode Util.
 import 'codemirror/addon/mode/multiplex';
 
-CodeMirror.defineMode('md-editor', (config) => {
+import CodeMirror from 'codemirror/lib/codemirror';
 
+CodeMirror.defineMode('md-editor', (config) => {
   let options = [];
 
   options.push({
-    open: '$$',
-    close: '$$',
-    mode: CodeMirror.getMode(config, 'stex'),
+    open : '$$',
+    close : '$$',
+    mode : CodeMirror.getMode(config, 'stex'),
   });
 
   options.push({
-    open: '$',
-    close: '$',
-    mode: CodeMirror.getMode(config, 'stex'),
+    open : '$',
+    close : '$',
+    mode : CodeMirror.getMode(config, 'stex'),
   });
 
-  return CodeMirror.multiplexingMode(
-    CodeMirror.getMode(config, 'gfm'),
-    ...options
-  );
+  return CodeMirror.multiplexingMode(CodeMirror.getMode(config, 'gfm'),
+                                     ...options);
 });

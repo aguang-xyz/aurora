@@ -1,9 +1,8 @@
-import React from 'react';
 import Path from 'path';
+import React from 'react';
 
 import IpcEvent from '../../ipc/IpcEvent';
 import IpcProxy from '../../ipc/IpcProxy';
-
 import styles from '../styles/Aurora.css';
 
 import MdEditor from './MdEditor';
@@ -17,14 +16,14 @@ class MarkdownEditor extends React.Component {
 
     this.state = {
 
-      path: null,
+      path : null,
 
-      savedContent: '',
-      editingContent: '',
+      savedContent : '',
+      editingContent : '',
 
-      saved: true,
+      saved : true,
 
-      theme: 'light',
+      theme : 'light',
     };
 
     this.mdEditorRef = React.createRef();
@@ -33,7 +32,6 @@ class MarkdownEditor extends React.Component {
   componentDidMount() {
 
     document.addEventListener('keydown', e => {
-
       console.log(e.which, e.shiftKey);
 
       // Ctrl+N: New markdown.
@@ -81,25 +79,28 @@ class MarkdownEditor extends React.Component {
 
     // Response for getting editor status.
     IpcProxy.on(IpcEvent.GET_EDITOR_STATUS, () => {
-
       console.log(`Event: GET_EDITOR_STATUS`)
 
-      const { path, savedContent, editingContent, saved, theme } = this.state;
+      const {path, savedContent, editingContent, saved, theme} = this.state;
 
       const title = this.getTitle();
 
       IpcProxy.send(IpcEvent.GET_EDITOR_STATUS_REPLY, {
 
-        path, savedContent, editingContent, saved, theme, title,
+        path,
+        savedContent,
+        editingContent,
+        saved,
+        theme,
+        title,
       });
     });
 
     // Response for setting editor status.
     IpcProxy.on(IpcEvent.SET_EDITOR_STATUS, (e, arg) => {
-
       console.log(`Event: SET_EDITOR_STATUS`, arg)
-      
-      const { path, content } = arg;
+
+      const {path, content} = arg;
 
       if (this.state.editingContent != content) {
 
@@ -109,25 +110,24 @@ class MarkdownEditor extends React.Component {
       this.setState({
 
         path,
-        savedContent: content,
-        editingContent: content,
-        saved: true,
+        savedContent : content,
+        editingContent : content,
+        saved : true,
       });
     });
   }
 
   getTitle() {
 
-    const name = this.state.path ?
-      Path.parse(this.state.path).base : 'Untitled';
+    const name =
+        this.state.path ? Path.parse(this.state.path).base : 'Untitled';
 
     return this.state.saved ? name : `${name} (*)`;
   }
 
   onContentChange(editingContent) {
 
-    const saved =
-      (editingContent === this.state.savedContent);
+    const saved = (editingContent === this.state.savedContent);
 
     this.setState({
       editingContent,
@@ -139,12 +139,13 @@ class MarkdownEditor extends React.Component {
 
     if (window.AuroraProps) {
 
-      const { path, content, theme } = window.AuroraProps;
+      const {path, content, theme} = window.AuroraProps;
 
       return (
         <div className="Container">
           <div className="RightPanel">
-            <MdViewer path={path} content={content} theme={theme} />
+            <MdViewer path={path} content={content} theme={
+        theme} />
           </div>
         </div>
       );
@@ -158,20 +159,16 @@ class MarkdownEditor extends React.Component {
 
         <div className="LeftPanel">
           <MdEditor
-            ref={this.mdEditorRef}
-            defaultValue={this.state.editingContent}
-            onChange={this.onContentChange.bind(this)}
-          />
-        </div>
+      ref = {this.mdEditorRef} defaultValue =
+          {this.state.editingContent} onChange =
+      { this.onContentChange.bind(this) } />
+        </div >
 
-        <div className="RightPanel">
-          <MdViewer
-            path={this.state.path}
-            content={this.state.editingContent}
-            theme={this.state.theme}
-          />
-        </div>
-      </div>
+          <div className = "RightPanel">< MdViewer
+    path = {this.state.path} content = {this.state.editingContent} theme =
+    { this.state.theme } />
+        </div > <
+        /div>
     );
   }
 }
