@@ -62,6 +62,7 @@
         "snap"
       ],
       "publish": {
+        "provider": ["github", "snapStore"],
         "channels": ["stable"]
       }
     }
