@@ -15,15 +15,15 @@ A lightweight markdown editor.
 
 ### For Mac Users.
 
-See [releases](https://github.com/aguang-xyz/aurora/releases).
+See [releases](https://github.com/aguang-xyz/aurora-editor/releases).
 
 ### For Windows Users.
 
-See [releases](https://github.com/aguang-xyz/aurora/releases).
+See [releases](https://github.com/aguang-xyz/aurora-editor/releases).
 
 ## Documents.
 
-See [documents](https://aguang-xyz.github.io/aurora/).
+See [documents](https://aguang-xyz.github.io/aurora-editor/).
 
 ## Development scripts.
 
