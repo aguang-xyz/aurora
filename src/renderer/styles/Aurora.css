@@ -40,6 +40,23 @@ body {
   max-width: 100%;
 }
 
+.Container .RightPanel>ul {
+
+  margin-left: 2rem;
+}
+
+.Container .RightPanel>ol {
+
+  margin-left: 2rem;
+}
+
+.Emoji {
+
+  position: relative;
+
+  top: 3px;
+}
+
 ::-webkit-scrollbar {
   width: 0px;
   background: transparent;

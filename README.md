@@ -1,6 +1,8 @@
-# ![](./resources/icons/64x64.png) Aurora Editor.
+# ![](./resources/icons/32x32.png) Aurora Editor.
 
-[![aurora-editor](https://snapcraft.io//aurora-editor/badge.svg)](https://snapcraft.io/aurora-editor)
+
+![](https://img.shields.io/github/v/tag/aguang-xyz/aurora-editor?label=version)
+![](https://img.shields.io/github/license/aguang-xyz/aurora-editor)
 
 A lightweight markdown editor.
 
@@ -9,6 +11,7 @@ A lightweight markdown editor.
 ### For Linux Users.
 
 [![Get it from the Snap Store](https://snapcraft.io/static/images/badges/en/snap-store-black.svg)](https://snapcraft.io/aurora-editor)
+
 
 ### For Mac Users.
 

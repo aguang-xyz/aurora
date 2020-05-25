@@ -9,13 +9,22 @@ import Latex from 'react-latex';
 import ReactMarkdown from 'react-markdown';
 import RemarkMath from 'remark-math';
 import Url from 'url';
+import ReactEmoji from 'react-emoji';
 
 import styles from '../styles/MdViewer.css';
 
 import VizViewer from './VizViewer';
 
 class MdViewer extends React.Component {
-  renderLatex(content) {
+  renderLatex(content, block = false) {
+    if (block) {
+      return (
+        <div>
+          <Latex>{content}</Latex>
+        </div>
+      );
+    }
+
     return <Latex>{content}</Latex>;
   }
 
@@ -78,19 +87,29 @@ class MdViewer extends React.Component {
     return <img src={src} alt={alt} />;
   }
 
+  renderText(text) {
+    return (
+      <span>
+        {ReactEmoji.emojify(text, { attributes: { className: 'Emoji' } })}
+      </span>
+    );
+  }
+
   render() {
     return (
       <ReactMarkdown
         source={this.props.content}
         plugins={[RemarkMath]}
         renderers={{
-          math: (text) => this.renderLatex(`$$${text.value}$$`),
+          math: (text) => this.renderLatex(`$$${text.value}$$`, true),
 
           inlineMath: (text) => this.renderLatex(`$${text.value}$`),
 
           code: ({ language, value }) => this.renderCode(value, language),
 
           image: ({ alt, src }) => this.renderImage(alt, src),
+
+          text: ({ value }) => this.renderText(value),
         }}
       />
     );

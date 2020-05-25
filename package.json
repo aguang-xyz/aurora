@@ -1,7 +1,7 @@
 {
   "name": "aurora-editor",
   "description": "A lightweight markdown editor.",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "license": "MIT",
   "author": {
     "name": "Guangrui Wang",
@@ -27,6 +27,7 @@
     "normalize.css": "^8.0.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-emoji": "^0.5.0",
     "react-html-parser": "^2.0.2",
     "react-json-view": "^1.19.1",
     "react-latex": "^1.6.0",
@@ -58,12 +59,17 @@
       "target": [
         "snap"
       ],
-      "publish": [{
-        "provider": "github"
-      }, {
-        "provider": "snapStore",
-        "channels": ["stable"]
-      }]
+      "publish": [
+        {
+          "provider": "github"
+        },
+        {
+          "provider": "snapStore",
+          "channels": [
+            "stable"
+          ]
+        }
+      ]
     }
   }
 }

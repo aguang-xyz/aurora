@@ -1,17 +1,74 @@
-# ![](https://github.com/aguang-xyz/aurora/raw/master/resources/icons/64x64.png) Aurora `v0.0.3`
+# ![](https://github.com/aguang-xyz/aurora/raw/master/resources/icons/64x64.png) Aurora Editor.
 
-**[Aurora](https://github.com/aguang-xyz/aurora)** is a lightweight markdown editor.
+![](https://img.shields.io/github/v/tag/aguang-xyz/aurora-editor?label=version)
+![](https://img.shields.io/github/license/aguang-xyz/aurora-editor)
+![](https://img.shields.io/github/stars/aguang-xyz/aurora-editor?style=social)
+
+Yet another lightweight markdown editor.
 
 ***
-## Features
+## Install.
 
-### Mathjax
+| Platform | Download |
+|:--------:|:---:|
+| Linux | [![Get it from the Snap Store](https://snapcraft.io/static/images/badges/en/snap-store-black.svg)](https://snapcraft.io/aurora-editor)  | 
+| Windows | [aurora-editor-Setup-0.0.3.exe](https://github.com/aguang-xyz/aurora-editor/releases/download/v0.0.3/aurora-editor-Setup-0.0.3.exe) |
+| Osx | [aurora-editor-0.0.3.dmg](https://github.com/aguang-xyz/aurora-editor/releases/download/v0.0.3/aurora-editor-0.0.3.dmg) |
+| Source code | [aurora-editor-0.0.3.tar.gz](https://github.com/aguang-xyz/aurora-editor/archive/v0.0.3.tar.gz) |
+
+
+## Features.
+
+### Strikethrough.
 
 ```
-$\pi = \int_{-1}^{1} \frac{dx}{\sqrt{1 - x^2}}$
+It is ~~yellow~~ red.
 ```
 
-$\pi = \int_{-1}^{1} \frac{dx}{\sqrt{1 - x^2}}$
+It is ~~yellow~~ red.
+
+
+### Emoji Shortcodes.
+
+See [twemoji](https://twemoji.twitter.com/) for more details.
+
+```
+:joy: It's a funny!
+```
+
+:joy: It's funny!
+
+### Unordered Lists.
+
+- One
+- Two
+- Three
+  - Three 1
+  - Three 2
+
+### Ordered Lists.
+
+1. One
+2. Two
+3. Three
+
+### Tables.
+
+| Name      | Description | Age |
+|:-----------:|:-----------:|:---:|
+| Aurora      | Title       | 3 |
+| Grey   | Text        | 5 |
+
+
+### Inline Mathjax.
+
+```
+$\pi$ can be calculated as $\int_{-1}^{1} \frac{dx}{\sqrt{1 - x^2}}$.
+```
+
+$\pi$ can be calculated as $\int_{-1}^{1} \frac{dx}{\sqrt{1 - x^2}}$.
+
+### Mathjax Blocks. 
 
 ```
 $$
@@ -27,7 +84,7 @@ $$
 \end{aligned}
 $$
 
-### Source Highlight
+### Source Highlight.
 
 ~~~
 ```javascript
@@ -73,7 +130,7 @@ const root = document.getElementById('root');
 ReactDOM.render(<MarkdownEditor />, root);
 ```
 
-### JSON
+### JSON.
 
 ~~~
 ```json
@@ -109,7 +166,7 @@ ReactDOM.render(<MarkdownEditor />, root);
 }
 ```
 
-### Graphviz
+### Graphviz.
 
 ~~~
 ```dot
