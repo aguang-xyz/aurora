@@ -1,155 +1,135 @@
-import {app, shell} from 'electron';
-import {promises as Fs} from 'fs';
-import Path from 'path';
+import { app, shell } from "electron";
+import { promises as Fs } from "fs";
+import Path from "path";
 
-import packageInfo from '../../../package.json';
-import IpcEvent from '../../ipc/IpcEvent';
-import IpcProxy from '../../ipc/IpcProxy';
+import packageInfo from "../../../package.json";
+import IpcEvent from "../../ipc/IpcEvent";
+import IpcProxy from "../../ipc/IpcProxy";
 
 import {
-  choosePathToOpen
-
-  ,
+  choosePathToOpen,
   choosePathToSave,
   choosePathToSaveHtml,
-
-  confirmToSave
-} from './Dialogs';
-import {createMainWindow, currentWindow} from './Windows';
+  confirmToSave,
+} from "./Dialogs";
+import { createMainWindow, currentWindow } from "./Windows";
 
 const getEditorStatus = () =>
-
-    new Promise((resolve, reject) => {
-      IpcProxy.once(IpcEvent.GET_EDITOR_STATUS_REPLY,
-                    (_, editorStatus) => { resolve(editorStatus); });
-
-      IpcProxy.send(IpcEvent.GET_EDITOR_STATUS);
+  new Promise((resolve, reject) => {
+    IpcProxy.once(IpcEvent.GET_EDITOR_STATUS_REPLY, (_, editorStatus) => {
+      resolve(editorStatus);
     });
 
-async function confirmSavedOrIgnored() {
+    IpcProxy.send(IpcEvent.GET_EDITOR_STATUS);
+  });
 
-  let {path, saved, editingContent} = await getEditorStatus();
+async function confirmSavedOrIgnored() {
+  let { path, saved, editingContent } = await getEditorStatus();
 
   if (saved) {
-
     return true;
   }
 
-  if (path === null && editingContent === '') {
-
+  if (path === null && editingContent === "") {
     return true;
   }
 
   const response = await confirmToSave(path);
 
   if (response === 0) {
-
     return true;
   }
 
   if (response === 1) {
-
     return false;
   }
 
-  path = path || await choosePathToSave();
+  path = path || (await choosePathToSave());
 
   if (!path) {
-
     return false;
-
   } else {
-
     await Fs.writeFile(path, editingContent);
 
     return true;
   }
-};
+}
 
 export async function newMarkdown() {
-
   if (await confirmSavedOrIgnored()) {
-
-    IpcProxy.send(IpcEvent.SET_EDITOR_STATUS, {path : null, content : ''});
+    IpcProxy.send(IpcEvent.SET_EDITOR_STATUS, { path: null, content: "" });
   }
-};
+}
 
 IpcProxy.on(IpcEvent.NEW_MARKDOWN, newMarkdown);
 
 export async function openMarkdown() {
-
   if (await confirmSavedOrIgnored()) {
-
     const path = await choosePathToOpen();
 
-    console.log('path', path);
+    console.log("path", path);
 
     if (path) {
+      const content = await Fs.readFile(path, "utf8");
 
-      const content = await Fs.readFile(path, 'utf8');
-
-      IpcProxy.send(IpcEvent.SET_EDITOR_STATUS, {path, content});
+      IpcProxy.send(IpcEvent.SET_EDITOR_STATUS, { path, content });
     }
   }
-};
+}
 
 IpcProxy.on(IpcEvent.OPEN_MARKDOWN, openMarkdown);
 
 export async function saveMarkdown() {
-
-  let {path, saved, editingContent} = await getEditorStatus();
+  let { path, saved, editingContent } = await getEditorStatus();
 
   if (!saved) {
-
-    path = path || await choosePathToSave();
+    path = path || (await choosePathToSave());
 
     if (path) {
+      await Fs.writeFile(path, editingContent, "utf8");
 
-      await Fs.writeFile(path, editingContent, 'utf8');
-
-      IpcProxy.send(IpcEvent.SET_EDITOR_STATUS,
-                    {path, content : editingContent});
+      IpcProxy.send(IpcEvent.SET_EDITOR_STATUS, {
+        path,
+        content: editingContent,
+      });
     }
   }
-};
+}
 
 IpcProxy.on(IpcEvent.SAVE_MARKDOWN, saveMarkdown);
 
 export async function saveAsMarkdown() {
-
-  const {editingContent} = await getEditorStatus();
+  const { editingContent } = await getEditorStatus();
 
   let path = await choosePathToSave();
 
   if (path) {
+    await Fs.writeFile(path, editingContent, "utf8");
 
-    await Fs.writeFile(path, editingContent, 'utf8');
-
-    IpcProxy.send(IpcEvent.SET_EDITOR_STATUS, {path, content : editingContent});
+    IpcProxy.send(IpcEvent.SET_EDITOR_STATUS, {
+      path,
+      content: editingContent,
+    });
   }
-};
+}
 
 IpcProxy.on(IpcEvent.SAVE_AS_MARKDOWN, saveAsMarkdown);
 
 export async function quit() {
-
   if (await confirmSavedOrIgnored()) {
-
     app.exit(0);
   }
-};
+}
 
 IpcProxy.on(IpcEvent.QUIT, quit);
 
 export async function toggleFullScreen() {
-
   const win = currentWindow();
 
   if (win) {
-
     win.setFullScreen(!win.isFullScreen());
   }
-};
+}
 
 IpcProxy.on(IpcEvent.TOGGLE_FULLSCREEN, toggleFullScreen);
 
@@ -159,18 +139,22 @@ IpcProxy.on(IpcEvent.SET_FULLSCREEN, (_, on) => {
   win.setFullScreen(false);
 });
 
-export const openHomePage = () => { shell.openExternal(packageInfo.homepage);};
+export const openHomePage = () => {
+  shell.openExternal(packageInfo.homepage);
+};
 
-export const reportIssue = () => { shell.openExternal(packageInfo.bugs.url);};
+export const reportIssue = () => {
+  shell.openExternal(packageInfo.bugs.url);
+};
 
-export const checkUpdate =
-    () => { shell.openExternal(packageInfo.homepage + '/releases');};
+export const checkUpdate = () => {
+  shell.openExternal(packageInfo.homepage + "/releases");
+};
 
 async function getHtml() {
+  const { url, path, title, editingContent, theme } = await getEditorStatus();
 
-  const {url, path, title, editingContent, theme} = await getEditorStatus();
-
-  const asset_url = 'https://aguang-xyz.github.io/aurora-editor/assets';
+  const asset_url = "https://aguang-xyz.github.io/aurora-editor/assets";
 
   return `
 		<!DOCTYPE html>
@@ -190,22 +174,19 @@ async function getHtml() {
 
 					window.AuroraProps = {
             path: ${JSON.stringify(path)},
-						content: ${
-      JSON.stringify(editingContent)},
-						theme: ${
-      JSON.stringify(theme)}	
+						content: ${JSON.stringify(editingContent)},
+						theme: ${JSON.stringify(theme)}	
 					};
 				</script>
 				<script src="${asset_url}/main.js"></script>
 			</body>
 		</html>
 	`;
-};
+}
 
 export async function exportHtml() {
-
   const html = await getHtml();
   const path = await choosePathToSaveHtml();
 
   await Fs.writeFile(path, html);
-};
+}

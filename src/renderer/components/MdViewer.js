@@ -1,4 +1,4 @@
-import 'highlight.js/styles/solarized-dark.css'
+import 'highlight.js/styles/solarized-dark.css';
 import 'katex/dist/katex.css';
 
 import Highlight from 'highlight.js';
@@ -15,21 +15,14 @@ import styles from '../styles/MdViewer.css';
 import VizViewer from './VizViewer';
 
 class MdViewer extends React.Component {
-
   renderLatex(content) {
-
-    return (
-        <Latex>{content}<
-            /Latex>
-    );
+    return <Latex>{content}</Latex>;
   }
 
   renderCode(code, lang) {
-
     code = code || '';
 
     if (lang === 'json') {
-
       return this.renderJson(code);
     }
 
@@ -41,91 +34,67 @@ class MdViewer extends React.Component {
       lang === 'osage' ||
       lang === 'twopi'
     ) {
-
       return this.renderViz(lang, code);
     }
 
     if (!Highlight.getLanguage(lang)) {
-
-      lang= 'plaintext';
+      lang = 'plaintext';
     }
 
     const html = Highlight.highlight(lang, code).value;
 
     return (
       <pre>
-        <code className={`hljs ${lang}`}>
-          {ReactHtmlParser(html)}
-        </code>
-        </pre>
+        <code className={`hljs ${lang}`}>{ReactHtmlParser(html)}</code>
+      </pre>
     );
   }
 
   renderJson(code) {
-
     try {
-
       return (
         <ReactJson
           src={JSON.parse(code)}
           theme="solarized"
           iconStyle="square"
           indentWidth={2}
-          style={{ lineHeight: '15px', padding: 5, }}
-        />);
+          style={{ lineHeight: '15px', padding: 5 }}
+        />
+      );
+    } catch {
+      return this.renderCode(code, 'plaintext');
+    }
   }
-  catch {
 
-    return this.renderCode(code, 'plaintext');
-  }
-}
-
-renderViz(lang, code) {
-
-    return (
-      <VizViewer
-    engine = {lang} content = {
-      code
-    } />
-    );
+  renderViz(lang, code) {
+    return <VizViewer engine={lang} content={code} />;
   }
 
   renderImage(alt, src) {
-
     if (this.props.path) {
+      src = Url.resolve('file://' + this.props.path, src);
+    }
 
-      src = Url.resolve('file:/ /' + this.props.path, src);
-}
-
-return (<img src = {src} alt = {
-  alt
-} />
-    );
+    return <img src={src} alt={alt} />;
   }
-  
-  render() {
 
+  render() {
     return (
       <ReactMarkdown
         source={this.props.content}
         plugins={[RemarkMath]}
         renderers={{
+          math: (text) => this.renderLatex(`$$${text.value}$$`),
 
-          math: (text) =>
-            this.renderLatex(`$$${text.value}$$`),
-          
-          inlineMath: (text) =>
-            this.renderLatex(`$${text.value}$`),
+          inlineMath: (text) => this.renderLatex(`$${text.value}$`),
 
-          code: ({ language, value }) =>
-            this.renderCode(value, language),
+          code: ({ language, value }) => this.renderCode(value, language),
 
-          image: ({ alt, src }) =>
-            this.renderImage(alt, src),
-
+          image: ({ alt, src }) => this.renderImage(alt, src),
         }}
-      />);
-}
+      />
+    );
+  }
 }
 
 export default MdViewer;

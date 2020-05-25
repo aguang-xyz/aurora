@@ -1,53 +1,46 @@
 /* Layout related */
 
-html, body {
-
+html,
+body {
   overflow: hidden;
 }
 
 .Container {
-
   display: flex;
   flex-direction: row;
-  
+
   height: 100vh;
-	overflow: hidden;
+  overflow: hidden;
 }
 
 .Container .LeftPanel {
-
   flex: 1;
-	height: 100%;
+  height: 100%;
 }
 
 .Container .LeftPanel .CodeMirror {
-
   height: 100%;
 }
 
 .Container .RightPanel {
-
   flex: 1;
-	height: 100%;
+  height: 100%;
 
-	box-sizing: border-box;
+  box-sizing: border-box;
 
-	overflow: auto;
+  overflow: auto;
   padding: 1.5rem;
 }
 
 .Container .RightPanel img {
-
   max-width: 100%;
 }
 
 .Container .RightPanel .VizBlock svg {
-
   max-width: 100%;
 }
 
 ::-webkit-scrollbar {
-
-	width: 0px;
-	background: transparent;
+  width: 0px;
+  background: transparent;
 }

@@ -1,7 +1,7 @@
 {
   "name": "aurora-editor",
   "description": "A lightweight markdown editor.",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "license": "MIT",
   "author": {
     "name": "Guangrui Wang",
