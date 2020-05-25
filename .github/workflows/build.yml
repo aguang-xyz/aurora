@@ -37,5 +37,6 @@ jobs:
           # release the app after building
           release: ${{ startsWith(github.ref, 'refs/tags/v') }}
 
-      - name: Publish to snapcraft.
+      - name: Publish to snapcraft for linux platform.
+        if: ${{ runner.os == 'Linux' }}
         run: snapscraft push --release=stable ./dist/aurora-editor*.snap
