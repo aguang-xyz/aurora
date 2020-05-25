@@ -23,11 +23,11 @@ jobs:
 
       - name: Install Snapcraft
         uses: samuelmeuli/action-snapcraft@v1
-				with:
+        with:
           # Config for secret: snapcraft_token is required.
-					snapcraft_token: ${{ secrets.snapcraft_token }}
+          snapcraft_token: ${{ secrets.snapcraft_token }}
 
-      - name: Build/release Electron app
+      - name: Build and release Electron app.
         uses: samuelmeuli/action-electron-builder@v1
         with:
           # GitHub token, automatically provided to the action
@@ -37,5 +37,5 @@ jobs:
           # release the app after building
           release: ${{ startsWith(github.ref, 'refs/tags/v') }}
 
-			- name: Publish to snapcraft.
-				run: snapscraft push --release=stable ./dist/aurora-editor*.snap
+      - name: Publish to snapcraft.
+        run: snapscraft push --release=stable ./dist/aurora-editor*.snap
