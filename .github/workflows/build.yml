@@ -1,8 +1,8 @@
 name: Build/release
 
 on:
-  create:
-    tags
+  push:
+    tags: '*'
 
 jobs:
   release:
