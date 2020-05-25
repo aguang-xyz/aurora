@@ -63,6 +63,7 @@
       ],
       "publish": {
         "provider": ["github", "snapStore"],
+        "releaseType": "release",
         "channels": ["stable"]
       }
     }
