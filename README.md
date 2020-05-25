@@ -1,4 +1,6 @@
-# ![](./resources/icons/64x64.png) Aurora Editor [![aurora-editor](https://snapcraft.io//aurora-editor/badge.svg)](https://snapcraft.io/aurora-editor)
+# ![](./resources/icons/64x64.png) Aurora Editor.
+
+[![aurora-editor](https://snapcraft.io//aurora-editor/badge.svg)](https://snapcraft.io/aurora-editor)
 
 A lightweight markdown editor.
 
