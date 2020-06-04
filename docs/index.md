@@ -2,7 +2,7 @@
 
 ![](https://img.shields.io/github/v/tag/aguang-xyz/aurora-editor?label=version)
 ![](https://img.shields.io/github/license/aguang-xyz/aurora-editor)
-![](https://img.shields.io/github/stars/aguang-xyz/aurora-editor?style=social)
+[![](https://img.shields.io/github/stars/aguang-xyz/aurora-editor?style=social)](https://github.com/aguang-xyz/aurora-editor)
 
 Yet another lightweight markdown editor.
 
