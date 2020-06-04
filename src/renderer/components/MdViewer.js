@@ -1,6 +1,7 @@
 import 'highlight.js/styles/solarized-dark.css';
 import 'katex/dist/katex.css';
 
+import Electron from 'electron';
 import Highlight from 'highlight.js';
 import React from 'react';
 import ReactHtmlParser from 'react-html-parser';
@@ -95,6 +96,22 @@ class MdViewer extends React.Component {
     );
   }
 
+  openLink(href) {
+    if (Electron) {
+      Electron.shell.openExternal(href);
+    } else {
+      window.open(href);
+    }
+  }
+
+  renderLink(href, children) {
+    return (
+      <a href="#" onClick={() => this.openLink(href)}>
+        {children}
+      </a>
+    );
+  }
+
   render() {
     return (
       <ReactMarkdown
@@ -110,6 +127,8 @@ class MdViewer extends React.Component {
           image: ({ alt, src }) => this.renderImage(alt, src),
 
           text: ({ value }) => this.renderText(value),
+
+          link: ({ href, children }) => this.renderLink(href, children),
         }}
       />
     );
