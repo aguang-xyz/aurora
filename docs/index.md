@@ -12,9 +12,9 @@ Yet another lightweight markdown editor.
 | Platform | Download |
 |:--------:|:---:|
 | Linux | [![Get it from the Snap Store](https://snapcraft.io/static/images/badges/en/snap-store-black.svg)](https://snapcraft.io/aurora-editor)  | 
-| Windows | [aurora-editor-Setup-0.0.3.exe](https://github.com/aguang-xyz/aurora-editor/releases/download/v0.0.3/aurora-editor-Setup-0.0.3.exe) |
-| Osx | [aurora-editor-0.0.3.dmg](https://github.com/aguang-xyz/aurora-editor/releases/download/v0.0.3/aurora-editor-0.0.3.dmg) |
-| Source code | [aurora-editor-0.0.3.tar.gz](https://github.com/aguang-xyz/aurora-editor/archive/v0.0.3.tar.gz) |
+| Windows | [aurora-editor-Setup-0.0.5.exe](https://github.com/aguang-xyz/aurora-editor/releases/download/v0.0.5/aurora-editor-Setup-0.0.5.exe) |
+| Osx | [aurora-editor-0.0.5.dmg](https://github.com/aguang-xyz/aurora-editor/releases/download/v0.0.5/aurora-editor-0.0.5.dmg) |
+| Source code | [aurora-editor-0.0.5.tar.gz](https://github.com/aguang-xyz/aurora-editor/archive/v0.0.5.tar.gz) |
 
 
 ## Features.
