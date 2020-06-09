@@ -16,6 +16,11 @@ import styles from '../styles/MdViewer.css';
 
 import VizViewer from './VizViewer';
 
+Highlight.configure({
+  tabReplace: '  ',
+  useBR: true,
+});
+
 class MdViewer extends React.Component {
   renderLatex(content, block = false) {
     if (block) {
@@ -51,7 +56,7 @@ class MdViewer extends React.Component {
       lang = 'plaintext';
     }
 
-    const html = Highlight.highlight(lang, code).value;
+    const html = Highlight.fixMarkup(Highlight.highlight(lang, code).value);
 
     return (
       <pre>
