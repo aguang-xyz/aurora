@@ -1,19 +1,19 @@
-import { app } from "electron";
+import { app } from 'electron';
 
-import { createMainWindow, currentWindow } from "./lib/Windows";
+import { createMainWindow, currentWindow } from './lib/Windows';
 
-app.on("window-all-closed", () => {
-  if (process.platform !== "darwin") {
+app.on('window-all-closed', () => {
+  if (process.platform !== 'darwin') {
     app.quit();
   }
 });
 
-app.on("activate", () => {
+app.on('activate', () => {
   if (currentWindow() === null) {
     createMainWindow();
   }
 });
 
-app.on("ready", () => {
+app.on('ready', () => {
   createMainWindow();
 });

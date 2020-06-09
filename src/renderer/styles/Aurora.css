@@ -36,8 +36,13 @@ body {
   max-width: 100%;
 }
 
+.Container .RightPanel .VizBlock {
+
+  text-align: center;
+  background: #0b2a35;
+}
+
 .Container .RightPanel .VizBlock svg {
-  max-width: 100%;
 }
 
 .Container .RightPanel>ul {
