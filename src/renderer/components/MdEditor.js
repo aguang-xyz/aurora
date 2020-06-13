@@ -1,6 +1,7 @@
 import "codemirror/keymap/sublime";
 import "codemirror/lib/codemirror.css";
 import "codemirror/theme/solarized.css";
+import "codemirror/theme/mdn-like.css";
 import "../libs/MdEditorMode";
 
 import CodeMirror from "codemirror/lib/codemirror";
@@ -31,7 +32,7 @@ class MdEditor extends React.Component {
   getTheme() {
     switch (this.props.theme) {
       case "light":
-        return "solarized light";
+        return "mdn-like";
 
       case "dark":
         return "solarized dark";

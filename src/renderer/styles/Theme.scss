@@ -75,19 +75,29 @@ body {
     }
 
     &.light {
-        @import "highlight.js/scss/solarized-light.scss";
+        @import "highlight.js/scss/atelier-savanna-light.scss";
+
+        .LeftPanel {
+
+            border-right: 1px solid rgb(221, 221, 221);
+        }
 
         .RightPanel {
 
             background: #fff;
             color: #000;
 
+            hr {
+                color: rgb(82, 100, 96);
+            }
+
             table {
+                border: none !important;
 
                 th,
                 td {
-                    border: 0.1rem solid #657b83;
-                    background: #fff;
+                    border: 0.1rem solid rgb(82, 100, 96);
+                    background: #ecf4ee;
                 }
             }
         }
