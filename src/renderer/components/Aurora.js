@@ -89,7 +89,7 @@ class MarkdownEditor extends React.Component {
 
       const { path, content, theme } = arg;
 
-      if (content) {
+      if (content !== undefined) {
         if (this.state.editingContent != content) {
           this.mdEditorRef && this.mdEditorRef.current.setValue(content);
         }
@@ -97,9 +97,10 @@ class MarkdownEditor extends React.Component {
 
       this.setState({
         path: path || this.state.path,
-        savedContent: content || this.state.savedContent,
-        editingContent: content || this.state.editingContent,
-        saved: content ? true : this.state.saved,
+        savedContent: content !== undefined ? content : this.state.savedContent,
+        editingContent:
+          content !== undefined ? content : this.state.editingContent,
+        saved: content !== undefined ? true : this.state.saved,
         theme: theme || this.state.theme,
       });
     });
