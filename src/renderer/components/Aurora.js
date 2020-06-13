@@ -127,7 +127,7 @@ class MarkdownEditor extends React.Component {
       const { path, content, theme } = window.AuroraProps;
 
       return (
-        <div className={`Container ${this.state.theme}`}>
+        <div className={`Container ${theme}`}>
           <div className="RightPanel">
             <MdViewer path={path} content={content} theme={theme} />
           </div>
