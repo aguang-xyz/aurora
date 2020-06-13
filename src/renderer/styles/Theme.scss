@@ -1,0 +1,132 @@
+html,
+body {
+    overflow: hidden;
+}
+
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+}
+
+.Container {
+
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+    overflow: hidden;
+
+    .LeftPanel {
+
+        flex: 1;
+        height: 100%;
+
+        .CodeMirror {
+
+            height: 100%;
+        }
+    }
+
+    .RightPanel {
+
+        flex: 1;
+        height: 100%;
+        box-sizing: border-box;
+        overflow: auto;
+        padding: 1.5rem;
+
+        &>ol,
+        &>ul {
+
+            margin-left: 2rem;
+        }
+
+        img {
+
+            max-width: 100%;
+        }
+
+
+        .Emoji {
+
+            position: relative;
+            top: 3px;
+        }
+
+        .VizBlock {
+
+            text-align: center;
+            overflow: hidden;
+        }
+
+
+        table {
+
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+
+            th,
+            td {
+                padding: 0.5rem;
+
+            }
+        }
+    }
+
+    &.light {
+        @import "highlight.js/scss/solarized-light.scss";
+
+        .RightPanel {
+
+            background: #fff;
+            color: #000;
+
+            table {
+
+                th,
+                td {
+                    border: 0.1rem solid #657b83;
+                    background: #fff;
+                }
+            }
+        }
+    }
+
+    &.dark {
+        @import "highlight.js/scss/solarized-dark.scss";
+
+        .RightPanel {
+
+            a {
+                color: #61bfc1;
+
+                &:visited {
+                    color: #466b6c;
+                }
+            }
+
+            blockquote p {
+                color: #666;
+            }
+
+            hr {
+                border: 0.5px solid rgba(255, 255, 255, 0.1);
+            }
+
+            table {
+
+                th,
+                td {
+                    border: 0.1rem solid #5a6a72;
+                    background: #0b2a35;
+                }
+            }
+
+            .VizBlock {
+
+                background: #0b2a35;
+            }
+        }
+    }
+}

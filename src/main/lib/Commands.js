@@ -190,3 +190,7 @@ export async function exportHtml() {
 
   await Fs.writeFile(path, html);
 }
+
+export function changeTheme(theme) {
+  IpcProxy.send(IpcEvent.SET_EDITOR_STATUS, { theme });
+}

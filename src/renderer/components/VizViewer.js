@@ -1,8 +1,8 @@
-import React from 'react';
-import HTMLParser from 'react-html-parser';
-import Viz from 'viz.js';
-import VizRender from 'viz.js/full.render.js';
-import { parse } from 'node-html-parser';
+import React from "react";
+import HTMLParser from "react-html-parser";
+import Viz from "viz.js";
+import VizRender from "viz.js/full.render.js";
+import { parse } from "node-html-parser";
 
 const ATTRS_FIX_MAP = {
   'fill=\\"#ffffff\\"': 'fill="#0b2a35"',
@@ -24,14 +24,16 @@ class VizViewer extends React.Component {
 
   fixAttributes(obj) {
     if (obj.rawAttrs) {
-      for (let attr in ATTRS_FIX_MAP) {
-        obj.rawAttrs = obj.rawAttrs.replace(
-          new RegExp(attr, 'g'),
-          ATTRS_FIX_MAP[attr],
-        );
+      if (this.props.theme === "dark") {
+        for (let attr in ATTRS_FIX_MAP) {
+          obj.rawAttrs = obj.rawAttrs.replace(
+            new RegExp(attr, "g"),
+            ATTRS_FIX_MAP[attr]
+          );
+        }
       }
 
-      if (obj.tagName === 'svg') {
+      if (obj.tagName === "svg") {
         const width = obj.rawAttrs.match(/width=\"([\d\.]+)\w+\"/)[1];
         const height = obj.rawAttrs.match(/height=\"([\d\.]+)\w+\"/)[1];
 
@@ -50,7 +52,7 @@ class VizViewer extends React.Component {
 
       return obj.outerHTML;
     } catch (e) {
-      console.error('error', e);
+      console.error("error", e);
 
       return originalSvg;
     }
@@ -59,7 +61,7 @@ class VizViewer extends React.Component {
   updateGraph(props) {
     let { engine, content } = props;
 
-    engine = engine || 'dot';
+    engine = engine || "dot";
 
     new Viz({
       render: VizRender.render,
@@ -88,7 +90,8 @@ class VizViewer extends React.Component {
   componentDidUpdate(prevProps) {
     const shouldUpdate =
       prevProps.engine !== this.props.engine ||
-      prevProps.content !== this.props.content;
+      prevProps.content !== this.props.content ||
+      prevProps.theme !== this.props.theme;
 
     if (shouldUpdate) {
       this.updateGraph(this.props);

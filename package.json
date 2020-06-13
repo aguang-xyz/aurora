@@ -1,7 +1,7 @@
 {
     "name": "aurora-editor",
     "description": "A lightweight markdown editor.",
-    "version": "0.0.8",
+    "version": "0.0.9",
     "license": "MIT",
     "author": {
         "name": "Guangrui Wang",
@@ -45,6 +45,8 @@
         "electron": "8.2.0",
         "electron-builder": "^22.4.1",
         "electron-webpack": "^2.8.2",
+        "node-sass": "^4.14.1",
+        "sass-loader": "^8.0.2",
         "source-map-loader": "^0.2.4",
         "webpack": "~4.42.1",
         "webpack-build-notifier": "^2.0.0"

@@ -28,11 +28,25 @@ class MdEditor extends React.Component {
     this.textareaRef = React.createRef();
   }
 
+  getTheme() {
+    switch (this.props.theme) {
+      case "light":
+        return "solarized light";
+
+      case "dark":
+        return "solarized dark";
+    }
+  }
+
+  getOptions() {
+    return { ...CM_OPTIONS, theme: this.getTheme() };
+  }
+
   componentDidMount() {
     if (this.textareaRef.current) {
       this.codemirror = CodeMirror.fromTextArea(
         this.textareaRef.current,
-        CM_OPTIONS
+        this.getOptions()
       );
 
       this.codemirror.on("change", (x) => {
@@ -40,6 +54,14 @@ class MdEditor extends React.Component {
           this.props.onChange(x.getValue());
         }
       });
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.theme != this.props.theme) {
+      if (this.codemirror) {
+        this.codemirror.setOption("theme", this.getTheme());
+      }
     }
   }
 

@@ -15,6 +15,7 @@ import {
   saveAsMarkdown,
   saveMarkdown,
   toggleFullScreen,
+  changeTheme,
 } from "./Commands";
 
 const isDev = process.env.NODE_ENV !== "production";
@@ -60,6 +61,19 @@ const createMenu = () =>
     {
       label: "View",
       submenu: [
+        {
+          label: "Change Theme",
+          submenu: [
+            {
+              label: "Dark",
+              click: () => changeTheme("dark"),
+            },
+            {
+              label: "Light",
+              click: () => changeTheme("light"),
+            },
+          ],
+        },
         {
           label: "Toggle Fullscreen (Ctrl-F)",
           click: toggleFullScreen,

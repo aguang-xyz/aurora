@@ -1,23 +1,22 @@
-import 'highlight.js/styles/solarized-dark.css';
-import 'katex/dist/katex.css';
+import "katex/dist/katex.css";
 
-import Electron from 'electron';
-import Highlight from 'highlight.js';
-import React from 'react';
-import ReactHtmlParser from 'react-html-parser';
-import ReactJson from 'react-json-view';
-import Latex from 'react-latex';
-import ReactMarkdown from 'react-markdown';
-import RemarkMath from 'remark-math';
-import Url from 'url';
-import ReactEmoji from 'react-emoji';
+import Electron from "electron";
+import Highlight from "highlight.js";
+import React from "react";
+import ReactHtmlParser from "react-html-parser";
+import ReactJson from "react-json-view";
+import Latex from "react-latex";
+import ReactMarkdown from "react-markdown";
+import RemarkMath from "remark-math";
+import Url from "url";
+import ReactEmoji from "react-emoji";
 
-import styles from '../styles/MdViewer.css';
+import styles from "../styles/MdViewer.css";
 
-import VizViewer from './VizViewer';
+import VizViewer from "./VizViewer";
 
 Highlight.configure({
-  tabReplace: '  ',
+  tabReplace: "  ",
   useBR: true,
 });
 
@@ -35,25 +34,25 @@ class MdViewer extends React.Component {
   }
 
   renderCode(code, lang) {
-    code = code || '';
+    code = code || "";
 
-    if (lang === 'json') {
+    if (lang === "json") {
       return this.renderJson(code);
     }
 
     if (
-      lang === 'circo' ||
-      lang === 'dot' ||
-      lang === 'fdp' ||
-      lang === 'neato' ||
-      lang === 'osage' ||
-      lang === 'twopi'
+      lang === "circo" ||
+      lang === "dot" ||
+      lang === "fdp" ||
+      lang === "neato" ||
+      lang === "osage" ||
+      lang === "twopi"
     ) {
       return this.renderViz(lang, code);
     }
 
     if (!Highlight.getLanguage(lang)) {
-      lang = 'plaintext';
+      lang = "plaintext";
     }
 
     const html = Highlight.fixMarkup(Highlight.highlight(lang, code).value);
@@ -70,24 +69,24 @@ class MdViewer extends React.Component {
       return (
         <ReactJson
           src={JSON.parse(code)}
-          theme="solarized"
+          theme={this.props.theme === "dark" ? "solarized" : undefined}
           iconStyle="square"
           indentWidth={2}
-          style={{ lineHeight: '15px', padding: 5 }}
+          style={{ lineHeight: "15px", padding: 5 }}
         />
       );
     } catch {
-      return this.renderCode(code, 'plaintext');
+      return this.renderCode(code, "plaintext");
     }
   }
 
   renderViz(lang, code) {
-    return <VizViewer engine={lang} content={code} />;
+    return <VizViewer engine={lang} content={code} theme={this.props.theme} />;
   }
 
   renderImage(alt, src) {
     if (this.props.path) {
-      src = Url.resolve('file://' + this.props.path, src);
+      src = Url.resolve("file://" + this.props.path, src);
     }
 
     return <img src={src} alt={alt} />;
@@ -96,7 +95,7 @@ class MdViewer extends React.Component {
   renderText(text) {
     return (
       <span>
-        {ReactEmoji.emojify(text, { attributes: { className: 'Emoji' } })}
+        {ReactEmoji.emojify(text, { attributes: { className: "Emoji" } })}
       </span>
     );
   }

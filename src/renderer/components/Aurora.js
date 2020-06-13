@@ -3,7 +3,6 @@ import React from "react";
 
 import IpcEvent from "../../ipc/IpcEvent";
 import IpcProxy from "../../ipc/IpcProxy";
-import styles from "../styles/Aurora.css";
 
 import MdEditor from "./MdEditor";
 import MdViewer from "./MdViewer";
@@ -88,17 +87,20 @@ class MarkdownEditor extends React.Component {
     IpcProxy.on(IpcEvent.SET_EDITOR_STATUS, (e, arg) => {
       console.log(`Event: SET_EDITOR_STATUS`, arg);
 
-      const { path, content } = arg;
+      const { path, content, theme } = arg;
 
-      if (this.state.editingContent != content) {
-        this.mdEditorRef && this.mdEditorRef.current.setValue(content);
+      if (content) {
+        if (this.state.editingContent != content) {
+          this.mdEditorRef && this.mdEditorRef.current.setValue(content);
+        }
       }
 
       this.setState({
-        path,
-        savedContent: content,
-        editingContent: content,
-        saved: true,
+        path: path || this.state.path,
+        savedContent: content || this.state.savedContent,
+        editingContent: content || this.state.editingContent,
+        saved: content ? true : this.state.saved,
+        theme: theme || this.state.theme,
       });
     });
   }
@@ -134,13 +136,14 @@ class MarkdownEditor extends React.Component {
     }
 
     return (
-      <div className="Container">
+      <div className={`Container ${this.state.theme}`}>
         <title>{this.getTitle()}</title>
         <div className="LeftPanel">
           <MdEditor
             ref={this.mdEditorRef}
             defaultValue={this.state.editingContent}
             onChange={this.onContentChange.bind(this)}
+            theme={this.state.theme}
           />
         </div>
         <div className="RightPanel">

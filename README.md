@@ -23,7 +23,8 @@ See [releases](https://github.com/aguang-xyz/aurora-editor/releases).
 
 ## Documents.
 
-See [documents](https://aguang-xyz.github.io/aurora-editor/).
+[Dark version](https://aguang-xyz.github.io/aurora-editor/light.html).
+[Light version](https://aguang-xyz.github.io/aurora-editor/dark.html).
 
 ## Development scripts.
 
