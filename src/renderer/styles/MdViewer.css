@@ -1,146 +1,170 @@
 /* Theme related. */
 
 body {
-  background: rgb(11, 32, 41);
-  color: #eee;
+    background: rgb(11, 32, 41);
+    color: #eee;
 }
 
 a {
-  color: #61bfc1;
+    color: #61bfc1;
 }
 
 a:visited {
-  color: #466b6c;
+    color: #466b6c;
 }
 
 blockquote p {
-  color: #666;
+    color: #666;
 }
 
 hr {
-  border: 0.5px solid rgba(255, 255, 255, 0.1);
+    border: 0.5px solid rgba(255, 255, 255, 0.1);
 }
 
 /* Markdown styles. */
 
 body {
-  font-family: Georgia, Palatino, serif;
-  line-height: 1;
+    font-family: Georgia, Palatino, serif;
+    line-height: 1;
 }
 
 h1,
 h2,
 h3,
 h4 {
-  font-weight: 400;
+    font-weight: 400;
 }
+
 h1,
 h2,
 h3,
 h4,
 h5,
 p {
-  margin-bottom: 24px;
-  padding: 0;
+    margin-bottom: 24px;
+    padding: 0;
 }
+
 h1 {
-  font-size: 48px;
+    font-size: 48px;
 }
+
 h2 {
-  font-size: 36px;
-  margin: 24px 0 6px;
+    font-size: 36px;
+    margin: 24px 0 6px;
 }
+
 h3 {
-  font-size: 24px;
+    font-size: 24px;
 }
+
 h4 {
-  font-size: 21px;
+    font-size: 21px;
 }
+
 h5 {
-  font-size: 18px;
+    font-size: 18px;
 }
+
 a {
-  margin: 0;
-  padding: 0;
-  text-decoration: none;
-  vertical-align: baseline;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    vertical-align: baseline;
 }
+
 a:hover {
-  text-decoration: underline;
+    text-decoration: underline;
 }
 
 ul,
 ol {
-  padding: 0;
-  margin: 0;
+    padding: 0;
+    margin: 0;
 }
+
 li {
-  line-height: 24px;
+    line-height: 24px;
 }
+
 li ul,
 li ul {
-  margin-left: 24px;
+    margin-left: 24px;
 }
+
 p,
 ul,
 ol {
-  font-size: 16px;
-  line-height: 24px;
-  max-width: 540px;
+    font-size: 16px;
+    line-height: 24px;
 }
+
 pre {
-  white-space: pre-wrap;
+    white-space: pre-wrap;
 }
+
 code {
-  font-family: Consolas, Monaco, Andale Mono, monospace;
-  line-height: 1.5;
-  font-size: inherit;
+    font-family: Consolas, Monaco, Andale Mono, monospace;
+    line-height: 1.5;
+    font-size: inherit;
 }
+
 aside {
-  display: block;
-  float: right;
-  width: 390px;
+    display: block;
+    float: right;
+    width: 390px;
 }
+
 blockquote {
-  border-left: 0.5em solid #eee;
-  padding: 0 2em;
-  margin-left: 0;
-  max-width: 476px;
+    border-left: 0.5em solid #eee;
+    padding: 0 2em;
+    margin-left: 0;
+    max-width: 476px;
 }
+
 blockquote cite {
-  font-size: 14px;
-  line-height: 20px;
+    font-size: 14px;
+    line-height: 20px;
 }
+
 blockquote cite:before {
-  content: "\2014 \00A0";
+    content: "\2014 \00A0";
 }
 
 blockquote p {
-  max-width: 460px;
+    max-width: 460px;
 }
+
 hr {
-  text-align: left;
-  margin: 0 auto 0 0;
+    text-align: left;
+    margin: 0 auto 0 0;
 }
 
 table {
-  border-collapse: collapse;
-  width: 100%;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 }
 
-table, th, td {
-  border: 1px solid #0b2a35;
+table,
+th,
+td {
+    border: 1px solid #0b2a35;
 }
 
-table, th, td {
-  border: 0.1rem solid #5a6a72;
-  padding: 0.5rem;
-  background: #0b2a35;
+table,
+th,
+td {
+    border: 0.1rem solid #5a6a72;
+    padding: 0.5rem;
+    background: #0b2a35;
 }
 
 th {
+    background: #143541;
+}
 
-  background: #143541;
+p {
+    text-align: justify;
 }

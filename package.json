@@ -1,76 +1,75 @@
 {
-  "name": "aurora-editor",
-  "description": "A lightweight markdown editor.",
-  "version": "0.0.7",
-  "license": "MIT",
-  "author": {
-    "name": "Guangrui Wang",
-    "email": "aguang.xyz@gmail.com"
-  },
-  "homepage": "https://github.com/aguang-xyz/aurora-editor",
-  "repository": "https://github.com/aguang-xyz/aurora-editor",
-  "bugs": {
-    "url": "https://github.com/aguang-xyz/aurora-editor/issues"
-  },
-  "scripts": {
-    "dev": "electron-webpack dev",
-    "compile": "electron-webpack",
-    "assets": "webpack --config ./conf/assets.config.js src/renderer/index.js --output ./docs/assets/main.js",
-    "build": "yarn compile",
-    "release": " yarn build && electron-builder"
-  },
-  "dependencies": {
-    "codemirror": "^5.53.2",
-    "highlight.js": "^10.0.2",
-    "katex": "^0.11.1",
-    "marked": "^1.0.0",
-    "node-html-parser": "^1.2.19",
-    "normalize.css": "^8.0.1",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-emoji": "^0.5.0",
-    "react-html-parser": "^2.0.2",
-    "react-json-view": "^1.19.1",
-    "react-latex": "^1.6.0",
-    "react-markdown": "^4.3.1",
-    "remark-math": "^2.0.1",
-    "source-map-support": "^0.5.16",
-    "viz.js": "^2.1.2"
-  },
-  "devDependencies": {
-    "@babel/preset-react": "^7.9.4",
-    "babelify": "^10.0.0",
-    "browserify": "^16.5.1",
-    "browserify-css": "^0.15.0",
-    "electron": "8.2.0",
-    "electron-builder": "^22.4.1",
-    "electron-webpack": "^2.8.2",
-    "source-map-loader": "^0.2.4",
-    "webpack": "~4.42.1",
-    "webpack-build-notifier": "^2.0.0"
-  },
-  "build": {
-    "appId": "xyz.aguang.editor.aurora",
-    "compression": "maximum",
-    "directories": {
-      "buildResources": "resources"
+    "name": "aurora-editor",
+    "description": "A lightweight markdown editor.",
+    "version": "0.0.8",
+    "license": "MIT",
+    "author": {
+        "name": "Guangrui Wang",
+        "email": "aguang.xyz@gmail.com"
     },
-    "linux": {
-      "category": "Productivity",
-      "target": [
-        "snap"
-      ],
-      "publish": [
-        {
-          "provider": "github"
+    "homepage": "https://github.com/aguang-xyz/aurora-editor",
+    "repository": "https://github.com/aguang-xyz/aurora-editor",
+    "bugs": {
+        "url": "https://github.com/aguang-xyz/aurora-editor/issues"
+    },
+    "scripts": {
+        "dev": "electron-webpack dev",
+        "compile": "electron-webpack",
+        "assets": "webpack --config ./conf/assets.config.js src/renderer/index.js --output ./docs/assets/main.js",
+        "build": "yarn compile",
+        "release": " yarn build && electron-builder"
+    },
+    "dependencies": {
+        "codemirror": "^5.53.2",
+        "highlight.js": "^10.0.2",
+        "katex": "^0.11.1",
+        "marked": "^1.0.0",
+        "node-html-parser": "^1.2.19",
+        "normalize.css": "^8.0.1",
+        "react": "^16.13.1",
+        "react-dom": "^16.13.1",
+        "react-emoji": "^0.5.0",
+        "react-html-parser": "^2.0.2",
+        "react-json-view": "^1.19.1",
+        "react-latex": "^1.6.0",
+        "react-markdown": "^4.3.1",
+        "remark-math": "^2.0.1",
+        "source-map-support": "^0.5.16",
+        "viz.js": "^2.1.2"
+    },
+    "devDependencies": {
+        "@babel/preset-react": "^7.9.4",
+        "babelify": "^10.0.0",
+        "browserify": "^16.5.1",
+        "browserify-css": "^0.15.0",
+        "electron": "8.2.0",
+        "electron-builder": "^22.4.1",
+        "electron-webpack": "^2.8.2",
+        "source-map-loader": "^0.2.4",
+        "webpack": "~4.42.1",
+        "webpack-build-notifier": "^2.0.0"
+    },
+    "build": {
+        "appId": "xyz.aguang.editor.aurora",
+        "compression": "maximum",
+        "directories": {
+            "buildResources": "resources"
         },
-        {
-          "provider": "snapStore",
-          "channels": [
-            "stable"
-          ]
+        "linux": {
+            "category": "Productivity",
+            "target": [
+                "snap"
+            ],
+            "publish": [{
+                    "provider": "github"
+                },
+                {
+                    "provider": "snapStore",
+                    "channels": [
+                        "stable"
+                    ]
+                }
+            ]
         }
-      ]
     }
-  }
 }
