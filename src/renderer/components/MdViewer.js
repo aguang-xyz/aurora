@@ -120,6 +120,7 @@ class MdViewer extends React.Component {
     return (
       <ReactMarkdown
         source={this.props.content}
+        escapeHtml={false}
         plugins={[RemarkMath]}
         renderers={{
           math: (text) => this.renderLatex(`$$${text.value}$$`, true),
