@@ -1,20 +1,25 @@
-# ![](https://github.com/aguang-xyz/aurora/raw/master/resources/icons/64x64.png) Aurora Editor.
+<center>
+	<img src="https://github.com/aguang-xyz/aurora/raw/master/resources/icons/256x256.png" />
+</center>
 
-![](https://img.shields.io/github/v/tag/aguang-xyz/aurora-editor?label=version)
-![](https://img.shields.io/github/license/aguang-xyz/aurora-editor)
-[![](https://img.shields.io/github/stars/aguang-xyz/aurora-editor?style=social)](https://github.com/aguang-xyz/aurora-editor)
+# Aurora Editor
 
-Yet another lightweight markdown editor.
+<center>
+	<img src="https://img.shields.io/github/v/tag/aguang-xyz/aurora-editor?label=version" />
+	<img src="https://img.shields.io/github/license/aguang-xyz/aurora-editor" />
+	<img src="https://img.shields.io/github/stars/aguang-xyz/aurora-editor?style=social" />
+</center>
 
-***
+> Yet another lightweight markdown editor.
+
 ## Install.
 
 | Platform | Download |
 |:--------:|:---:|
 | Linux | [![Get it from the Snap Store](https://snapcraft.io/static/images/badges/en/snap-store-black.svg)](https://snapcraft.io/aurora-editor)  | 
-| Windows | [aurora-editor-Setup-0.0.13.exe](https://github.com/aguang-xyz/aurora-editor/releases/download/v0.0.13/aurora-editor-Setup-0.0.13.exe) |
-| Osx | [aurora-editor-0.0.13.dmg](https://github.com/aguang-xyz/aurora-editor/releases/download/v0.0.13/aurora-editor-0.0.13.dmg) |
-| Source code | [aurora-editor-0.0.13.tar.gz](https://github.com/aguang-xyz/aurora-editor/archive/v0.0.13.tar.gz) |
+| Windows | [aurora-editor-latest.exe](https://github.com/aguang-xyz/aurora-editor/releases) |
+| Osx | [aurora-editor-latest.dmg](https://github.com/aguang-xyz/aurora-editor/releases) |
+| Source code | [aurora-editor-latest.tar.gz](https://github.com/aguang-xyz/aurora-editor/releases) |
 
 
 ## Features.
