@@ -8,8 +8,23 @@ body {
 /* Markdown styles. */
 
 body {
-    font-family: Georgia, Palatino, serif;
+    font-family: 'Latin Modern', Georgia, Cambria, 'Times New Roman', Times, serif;
     line-height: 1;
+}
+
+h1 {
+    font-size: 2.5rem !important;
+    font-weight: bold !important;
+    line-height: 3.25rem !important;
+    margin-bottom: 1.625rem !important;
+    text-align: center !important;
+}
+
+h2 {
+    margin-bottom: 0.8rem;
+    font-size: 1.7rem;
+    line-height: 2rem;
+    margin-top: 3rem;
 }
 
 h1,
@@ -137,4 +152,8 @@ input[type=checkbox] {
     height: 1rem;
     vertical-align: text-bottom;
     margin-right: 0.4rem;
+}
+
+img {
+    vertical-align: bottom;
 }
