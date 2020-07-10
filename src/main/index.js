@@ -18,11 +18,14 @@ app.on("activate", () => {
 app.on("ready", () => {
   createMainWindow();
 
-  app.on("open-file", (event, path) => {
-    openMarkdownFromArgv(path);
-  });
-
-  if (process.argv.length > 1) {
+  // On linux or window, we should read the argv to determine opening path.
+  if (process.platform !== "darwin" && process.argv.length > 1) {
     return openMarkdownFromArgv(process.argv[1]);
   }
+});
+
+// On macos, we will receive open-file events.
+app.on("open-file", (event, path) => {
+  event.preventDefault();
+  openMarkdownFromArgv(path);
 });
