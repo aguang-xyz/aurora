@@ -1,8 +1,9 @@
 # ![](./resources/icons/32x32.png) Aurora Editor.
 
-
 ![](https://img.shields.io/github/v/tag/aguang-xyz/aurora-editor?label=version)
 ![](https://img.shields.io/github/license/aguang-xyz/aurora-editor)
+[![Build/release](https://github.com/aguang-xyz/aurora-editor/workflows/Build/release/badge.svg)](https://github.com/aguang-xyz/aurora-editor/actions)
+
 
 A lightweight markdown editor.
 
