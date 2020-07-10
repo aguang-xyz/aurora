@@ -104,6 +104,9 @@ class MarkdownEditor extends React.Component {
         theme: theme || this.state.theme,
       });
     });
+
+    // Notify the main thread, view rendering is ready.
+    IpcProxy.send(IpcEvent.READY, {});
   }
 
   getTitle() {

@@ -78,7 +78,13 @@ export async function openMarkdown() {
 
 IpcProxy.on(IpcEvent.OPEN_MARKDOWN, openMarkdown);
 
+const ready = new Promise((resolve) =>
+  IpcProxy.on(IpcEvent.READY, () => resolve())
+);
+
 export async function openMarkdownFromArgv(path) {
+  await ready;
+
   if (await confirmSavedOrIgnored()) {
     try {
       const content = await Fs.readFile(path, "utf8");
@@ -86,6 +92,7 @@ export async function openMarkdownFromArgv(path) {
       IpcProxy.send(IpcEvent.SET_EDITOR_STATUS, { path, content });
     } catch (err) {
       // Ignore this error.
+      // displayWarning(err && err.message);
     }
   }
 }
