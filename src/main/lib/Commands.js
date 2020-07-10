@@ -11,6 +11,7 @@ import {
   choosePathToSave,
   choosePathToSaveHtml,
   confirmToSave,
+  displayWarning,
 } from "./Dialogs";
 import { createMainWindow, currentWindow } from "./Windows";
 
@@ -67,8 +68,6 @@ export async function openMarkdown() {
   if (await confirmSavedOrIgnored()) {
     const path = await choosePathToOpen();
 
-    console.log("path", path);
-
     if (path) {
       const content = await Fs.readFile(path, "utf8");
 
@@ -78,6 +77,18 @@ export async function openMarkdown() {
 }
 
 IpcProxy.on(IpcEvent.OPEN_MARKDOWN, openMarkdown);
+
+export async function openMarkdownFromArgv(path) {
+  if (await confirmSavedOrIgnored()) {
+    try {
+      const content = await Fs.readFile(path, "utf8");
+
+      IpcProxy.send(IpcEvent.SET_EDITOR_STATUS, { path, content });
+    } catch (err) {
+      displayWarning(err && err.message);
+    }
+  }
+}
 
 export async function saveMarkdown() {
   let { path, saved, editingContent } = await getEditorStatus();

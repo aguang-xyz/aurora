@@ -1,5 +1,15 @@
 import { dialog } from "electron";
 
+export async function displayWarning(message) {
+  return (
+    await dialog.showMessageBox({
+      type: "warning",
+      message: message,
+      buttons: ["Ok"],
+    })
+  ).response;
+}
+
 export async function confirmToSave(path) {
   return (
     await dialog.showMessageBox({
