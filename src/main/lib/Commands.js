@@ -85,7 +85,7 @@ export async function openMarkdownFromArgv(path) {
 
       IpcProxy.send(IpcEvent.SET_EDITOR_STATUS, { path, content });
     } catch (err) {
-      displayWarning(err && err.message);
+      // Ignore this error.
     }
   }
 }

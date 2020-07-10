@@ -18,11 +18,13 @@ app.on("activate", () => {
 app.on("ready", () => {
   createMainWindow();
 
-  if (process.argv[1]) {
-    return openMarkdownFromArgv(process.argv[1]);
-  }
-
   app.on("open-file", (event, path) => {
     openMarkdownFromArgv(path);
   });
+
+  console.log("argv:", process.argv[1]);
+
+  if (process.argv[1]) {
+    return openMarkdownFromArgv(process.argv[1]);
+  }
 });
