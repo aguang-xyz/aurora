@@ -22,9 +22,7 @@ app.on("ready", () => {
     openMarkdownFromArgv(path);
   });
 
-  console.log("argv:", process.argv[1]);
-
-  if (process.argv[1]) {
-    return openMarkdownFromArgv(process.argv[1]);
+  if (process.argv.length > 0) {
+    return openMarkdownFromArgv(process.argv[0]);
   }
 });
