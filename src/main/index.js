@@ -22,6 +22,8 @@ app.on("ready", () => {
     openMarkdownFromArgv(path);
   });
 
+  console.log("process.argv:", JSON.stringify(process.argv));
+
   if (process.argv.length > 0) {
     return openMarkdownFromArgv(process.argv[0]);
   }
