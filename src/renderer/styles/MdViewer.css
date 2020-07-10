@@ -131,3 +131,10 @@ th {
 p {
     text-align: justify;
 }
+
+input[type=checkbox] {
+    width: 1rem;
+    height: 1rem;
+    vertical-align: text-bottom;
+    margin-right: 0.4rem;
+}
