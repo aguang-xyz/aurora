@@ -5,7 +5,8 @@
         "buildResources": "resources"
     },
     "win": {
-        "target": "appx"
+        "target": "appx",
+        "applicationId": "xyz.aguang.editor.aurora"
     },
     "linux": {
         "category": "Productivity",

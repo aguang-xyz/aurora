@@ -23,12 +23,6 @@ jobs:
         with:
           node-version: 10
 
-      - name: Install Snapcraft.
-        uses: samuelmeuli/action-snapcraft@v1
-        with:
-          # Config for secret: snapcraft_token is required.
-          snapcraft_token: ${{ secrets.snapcraft_token }}
-
       - name: Build and release Electron app.
         uses: samuelmeuli/action-electron-builder@v1
         with:
