@@ -5,8 +5,10 @@
         "buildResources": "resources"
     },
     "win": {
-        "target": "appx",
-        "applicationId": "xyz.aguang.editor.aurora"
+        "target": "appx"
+    },
+    "appx": {
+        "identityName": "xyz.aguang.editor.aurora"
     },
     "linux": {
         "category": "Productivity",
