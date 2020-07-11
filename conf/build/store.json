@@ -8,10 +8,10 @@
         "target": "appx"
     },
     "appx": {
-        "identityName": "8841GuangruiWang.aurora-editor",
+        "identityName": "8841GuangruiWang.AuroraMdEditor",
         "publisher": "CN=874B7D23-A3E1-46B3-B0D2-0C8570559497",
         "publisherDisplayName": "Guangrui Wang",
-        "applicationId": "GuangruiWang.aurora-editor"
+        "applicationId": "GuangruiWang.AuroraMdEditor"
     },
     "linux": {
         "category": "Productivity",
