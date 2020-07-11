@@ -1,7 +1,7 @@
 {
     "name": "aurora-editor",
     "description": "A lightweight markdown editor.",
-    "version": "0.0.21",
+    "version": "0.0.22",
     "license": "MIT",
     "author": {
         "name": "Guangrui Wang",
@@ -71,7 +71,14 @@
                         "stable"
                     ]
                 }
-            ]
+            ],
+            "fileAssociations": [{
+                "ext": "md",
+                "description": "Markdown File",
+                "mimeType": "text/markdown",
+                "name": "Markdown File",
+                "role": "Editor"
+            }]
         },
         "fileAssociations": [{
             "ext": "md",
