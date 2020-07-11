@@ -9,7 +9,9 @@
     },
     "appx": {
         "identityName": "8841GuangruiWang.aurora-editor",
-        "publisher": "874B7D23-A3E1-46B3-B0D2-0C8570559497"
+        "publisher": "CN=874B7D23-A3E1-46B3-B0D2-0C8570559497",
+        "publisherDisplayName": "GuangruiWang",
+        "applicationId": "GuangruiWang.aurora-editor"
     },
     "linux": {
         "category": "Productivity",
