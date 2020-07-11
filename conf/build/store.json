@@ -1,0 +1,33 @@
+{
+    "appId": "xyz.aguang.editor.aurora",
+    "compression": "maximum",
+    "directories": {
+        "buildResources": "resources"
+    },
+    "win": {
+        "target": "appx"
+    },
+    "linux": {
+        "category": "Productivity",
+        "target": [
+            "snap"
+        ],
+        "publish": [{
+                "provider": "github"
+            },
+            {
+                "provider": "snapStore",
+                "channels": [
+                    "stable"
+                ]
+            }
+        ]
+    },
+    "fileAssociations": [{
+        "ext": "md",
+        "description": "Markdown File",
+        "mimeType": "text/markdown",
+        "name": "Markdown File",
+        "role": "Editor"
+    }]
+}

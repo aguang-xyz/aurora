@@ -1,0 +1,21 @@
+{
+    "appId": "xyz.aguang.editor.aurora",
+    "compression": "maximum",
+    "directories": {
+        "buildResources": "resources"
+    },
+    "linux": {
+        "category": "Productivity",
+        "target": [
+            "deb",
+            "rpm"
+        ]
+    },
+    "fileAssociations": [{
+        "ext": "md",
+        "description": "Markdown File",
+        "mimeType": "text/markdown",
+        "name": "Markdown File",
+        "role": "Editor"
+    }]
+}

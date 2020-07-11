@@ -1,7 +1,7 @@
 {
     "name": "aurora-editor",
     "description": "A lightweight markdown editor.",
-    "version": "0.0.23",
+    "version": "0.0.24",
     "license": "MIT",
     "author": {
         "name": "Guangrui Wang",
@@ -17,7 +17,8 @@
         "compile": "electron-webpack",
         "assets": "webpack --config ./conf/assets.config.js src/renderer/index.js --output ./docs/assets/main.js",
         "build": "yarn compile",
-        "release": " yarn build && electron-builder"
+        "release": " yarn build && electron-builder",
+        "release-windows-store": " yarn build && electron-builder --config ./conf/windows-store.yml"
     },
     "dependencies": {
         "codemirror": "^5.53.2",
@@ -50,36 +51,5 @@
         "source-map-loader": "^0.2.4",
         "webpack": "~4.42.1",
         "webpack-build-notifier": "^2.0.0"
-    },
-    "build": {
-        "appId": "xyz.aguang.editor.aurora",
-        "compression": "maximum",
-        "directories": {
-            "buildResources": "resources"
-        },
-        "linux": {
-            "category": "Productivity",
-            "target": [
-                "snap"
-            ],
-            "publish": [{
-                    "provider": "github"
-                },
-                {
-                    "provider": "snapStore",
-                    "channels": [
-                        "stable"
-                    ]
-                }
-            ],
-            "mimeTypes": ["text/markdown"]
-        },
-        "fileAssociations": [{
-            "ext": "md",
-            "description": "Markdown File",
-            "mimeType": "text/markdown",
-            "name": "Markdown File",
-            "role": "Editor"
-        }]
     }
 }
