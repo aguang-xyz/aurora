@@ -17,7 +17,7 @@
 | Platform | Download |
 |:--------:|:---:|
 | Linux | [![Get it from the Snap Store](https://snapcraft.io/static/images/badges/en/snap-store-black.svg)](https://snapcraft.io/aurora-editor)  | 
-| Windows | [aurora-editor-latest.exe](https://github.com/aguang-xyz/aurora-editor/releases) |
+| Windows | [![Get it from the Miscrosoft Store](https://github.com/aguang-xyz/aurora/raw/master/resources/badges/ms-store.png)](https://www.microsoft.com/en-nz/p/auroramdeditor/9n5f5tgpqknp) |
 | Osx | [aurora-editor-latest.dmg](https://github.com/aguang-xyz/aurora-editor/releases) |
 | Source code | [aurora-editor-latest.tar.gz](https://github.com/aguang-xyz/aurora-editor/releases) |
 
