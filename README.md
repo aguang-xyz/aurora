@@ -9,14 +9,17 @@ A lightweight markdown editor.
 
 ### For Linux Users.
 
-[![Get it from the Snap Store](https://snapcraft.io/static/images/badges/en/snap-store-black.svg)](https://snapcraft.io/aurora-editor)
-
-
-### For Mac Users.
-
-See [releases](https://github.com/aguang-xyz/aurora-editor/releases).
+<a href="https://snapcraft.io/aurora-editor">
+  <img src="https://snapcraft.io/static/images/badges/en/snap-store-black.svg" width="200" />
+</a>
 
 ### For Windows Users.
+
+<a href="https://www.microsoft.com/store/apps/9N5F5TGPQKNP">
+  <img src="https://storebadge.azureedge.net/assets/en.png" width="200" />
+</a>
+
+### For Mac Users.
 
 See [releases](https://github.com/aguang-xyz/aurora-editor/releases).
 
