@@ -116,6 +116,18 @@ class MdViewer extends React.Component {
     );
   }
 
+  componentDidMount() {
+    document.addEventListener("click", (event) => {
+      event.preventDefault();
+
+      if (event.srcElement.nodeName.toLowerCase() === "a") {
+        const href = event.srcElement.href;
+
+        this.openLink(href);
+      }
+    });
+  }
+
   render() {
     return (
       <ReactMarkdown
