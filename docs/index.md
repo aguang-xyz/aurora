@@ -7,7 +7,9 @@
 <center>
 	<img src="https://img.shields.io/github/v/tag/aguang-xyz/aurora-editor?label=version" />
 	<img src="https://img.shields.io/github/license/aguang-xyz/aurora-editor" />
-	<img src="https://img.shields.io/github/stars/aguang-xyz/aurora-editor?style=social" />
+  <a href="https://github.com/aguang-xyz/aurora-editor">
+    <img src="https://img.shields.io/github/stars/aguang-xyz/aurora-editor?style=social" />
+  </a>
 </center>
 
 > Yet another lightweight markdown editor.
@@ -20,7 +22,6 @@
 | Windows | [![Get it from the Miscrosoft Store](https://github.com/aguang-xyz/aurora/raw/master/resources/badges/ms-store.png)](https://www.microsoft.com/en-nz/p/auroramdeditor/9n5f5tgpqknp) |
 | Osx | [aurora-editor-latest.dmg](https://github.com/aguang-xyz/aurora-editor/releases) |
 | Source code | [aurora-editor-latest.tar.gz](https://github.com/aguang-xyz/aurora-editor/releases) |
-
 
 ## Features.
 
