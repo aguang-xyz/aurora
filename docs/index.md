@@ -264,3 +264,23 @@ digraph finite_state_machine {
   LR_8 -> LR_5 [ label = "S(a)" ];
 }
 ```
+
+### Mermaid.
+
+~~~
+```mermaid
+sequenceDiagram
+  Alice->>John: Hello John, how are you?
+  activate John
+  John-->>Alice: Great!  
+  deactivate John
+```
+~~~
+
+```mermaid
+sequenceDiagram
+  Alice->>John: Hello John, how are you?
+  activate John
+  John-->>Alice: Great!
+  deactivate John
+```

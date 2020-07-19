@@ -14,6 +14,7 @@ import ReactEmoji from "react-emoji";
 import styles from "../styles/MdViewer.css";
 
 import VizViewer from "./VizViewer";
+import MermaidViewer from "./MermaidViewer";
 
 Highlight.configure({
   tabReplace: "  ",
@@ -51,6 +52,10 @@ class MdViewer extends React.Component {
       return this.renderViz(lang, code);
     }
 
+    if (lang === "mermaid") {
+      return this.renderMermaid(lang, code);
+    }
+
     if (!Highlight.getLanguage(lang)) {
       lang = "plaintext";
     }
@@ -82,6 +87,10 @@ class MdViewer extends React.Component {
 
   renderViz(lang, code) {
     return <VizViewer engine={lang} content={code} theme={this.props.theme} />;
+  }
+
+  renderMermaid(lang, code) {
+    return <MermaidViewer theme={this.props.theme} content={code} />;
   }
 
   renderImage(alt, src) {
