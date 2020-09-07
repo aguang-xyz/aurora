@@ -18,7 +18,7 @@ import MermaidViewer from "./MermaidViewer";
 
 Highlight.configure({
   tabReplace: "  ",
-  useBR: true,
+  useBR: false,
 });
 
 class MdViewer extends React.Component {
@@ -62,9 +62,14 @@ class MdViewer extends React.Component {
 
     const html = Highlight.fixMarkup(Highlight.highlight(lang, code).value);
 
+    console.log("html:", html);
+
     return (
       <pre>
-        <code className={`hljs ${lang}`}>{ReactHtmlParser(html)}</code>
+        <code
+          className={`hljs ${lang}`}
+          dangerouslySetInnerHTML={{ __html: html }}
+        />
       </pre>
     );
   }
