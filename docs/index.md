@@ -2,7 +2,7 @@
 	<img src="https://github.com/aguang-xyz/aurora/raw/master/resources/icons/256x256.png" />
 </center>
 
-# Aurora Editor
+# :clipboard: Aurora Editor
 
 <center>
 	<img src="https://img.shields.io/github/v/tag/aguang-xyz/aurora-editor?label=version" />
@@ -12,7 +12,7 @@
   </a>
 </center>
 
-> Yet another lightweight markdown editor.
+> :star: Yet another lightweight markdown editor.
 
 ## Install.
 
@@ -97,10 +97,10 @@ See [twemoji](https://twemoji.twitter.com/) for more details.
 
 ### Tables.
 
-| Name      | Description | Age |
-|:-----------:|:-----------:|:---:|
-| Aurora      | Title       | 3 |
-| Grey   | Text        | 5 |
+| Name        | Gender | Age |
+|:-----------:|:------:|:---:|
+| Aurora      | :girl: |  3  |
+| Grey        | :boy:  | 5   |
 
 
 ### Inline Mathjax.

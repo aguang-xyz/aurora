@@ -47,11 +47,37 @@ body {
             max-width: 100%;
         }
 
+        h1 .Emoji {
+          width: 2.5rem !important;
+          height: 2.5rem !important;
+          vertical-align: text-top !important;
+          margin-top: 2px !important;
+        }
+
+        h2 .Emoji {
+          width: 1.7rem !important;
+          height: 1.7rem !important;
+          vertical-align: text-top !important;
+          margin-top: 1px !important;
+        }
+
+        h3 .Emoji {
+          width: 1.33rem !important;
+          height: 1.33rem !important;
+          vertical-align: text-top !important;
+          margin-top: 0.5px !important;
+        }
+
+        h4 .Emoji {
+          width: 1rem !important;
+          height: 1rem !important;
+          vertical-align: text-top !important;
+        }
 
         .Emoji {
-
-            position: relative;
-            top: 3px;
+          width: 1rem !important;
+          height: 1rem !important;
+          vertical-align: text-top !important;
         }
 
         .VizBlock {
