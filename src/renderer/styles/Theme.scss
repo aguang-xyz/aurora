@@ -90,10 +90,10 @@ body {
             overflow: hidden;
         }
 
-        p>code {
-            padding: .2rem .4rem;
-            font-size: 0.85rem;
-            border-radius: 0.2rem;
+        h1>code,h2>code,h3>code,h4>code,li>code,p>code {
+            padding: .2em .4em;
+            font-size: 0.85em;
+            border-radius: 0.2em;
         }
 
         table {
@@ -128,7 +128,7 @@ body {
                 color: rgb(82, 100, 96);
             }
 
-            p>code {
+            h1>code,h2>code,h3>code,h4>code,li>code,p>code {
                 background: #ecf4ee;
             }
 
@@ -165,7 +165,7 @@ body {
                 border: 0.5px solid rgba(255, 255, 255, 0.1);
             }
 
-            p>code {
+            h1>code,h2>code,h3>code,h4>code,li>code,p>code {
                 background: #002b36;
             }
 
