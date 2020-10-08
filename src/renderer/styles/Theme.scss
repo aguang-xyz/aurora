@@ -90,6 +90,11 @@ body {
             overflow: hidden;
         }
 
+        p>code {
+            padding: .2rem .4rem;
+            font-size: 0.85rem;
+            border-radius: 0.2rem;
+        }
 
         table {
 
@@ -123,6 +128,10 @@ body {
                 color: rgb(82, 100, 96);
             }
 
+            p>code {
+                background: #ecf4ee;
+            }
+
             table {
                 border: none !important;
 
@@ -154,6 +163,10 @@ body {
 
             hr {
                 border: 0.5px solid rgba(255, 255, 255, 0.1);
+            }
+
+            p>code {
+                background: #002b36;
             }
 
             table {
