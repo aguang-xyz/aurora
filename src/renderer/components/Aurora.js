@@ -96,7 +96,7 @@ class MarkdownEditor extends React.Component {
       }
 
       this.setState({
-        path: path || this.state.path,
+        path: path !== undefined ? path : this.state.path,
         savedContent: content !== undefined ? content : this.state.savedContent,
         editingContent:
           content !== undefined ? content : this.state.editingContent,
