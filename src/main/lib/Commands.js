@@ -1,6 +1,8 @@
 import { app, shell } from "electron";
 import { promises as Fs } from "fs";
+import { tmpdir } from "os";
 import Path from "path";
+import Puppeteer from 'puppeteer';
 
 import packageInfo from "../../../package.json";
 import IpcEvent from "../../ipc/IpcEvent";
@@ -10,6 +12,7 @@ import {
   choosePathToOpen,
   choosePathToSave,
   choosePathToSaveHtml,
+  choosePathToSavePng,
   confirmToSave,
   displayWarning,
 } from "./Dialogs";
@@ -202,11 +205,52 @@ async function getHtml() {
 	`;
 }
 
+async function getPreviewShape() {
+  const {
+    previewWidth,
+    previewHeight,
+  } = await getEditorStatus();
+
+  return {
+    previewWidth,
+    previewHeight,
+  };
+}
+
 export async function exportHtml() {
   const html = await getHtml();
   const path = await choosePathToSaveHtml();
 
   await Fs.writeFile(path, html);
+}
+
+export async function exportPng() {
+  const html = await getHtml();
+  const { previewWidth, previewHeight } = await getPreviewShape();
+
+  const tmpHtmlPath = Path.join(tmpdir(),
+    `${Math.random().toString(36).substring(2, 15)}.html`);
+
+  await Fs.writeFile(tmpHtmlPath, html);
+
+  console.log(`tmp-html-path: ${tmpHtmlPath}`);
+
+  const browser = await Puppeteer.launch();
+  const page = await browser.newPage();
+
+  await page.setViewport({
+    width: previewWidth,
+    height: previewHeight,
+  })
+
+  await page.goto(`file://${tmpHtmlPath}`);
+  
+  const path = await choosePathToSavePng();
+  
+  await page.screenshot({
+    path: path,
+    fullPage: true,
+  })
 }
 
 export function changeTheme(theme) {

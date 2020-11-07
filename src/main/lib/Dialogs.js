@@ -46,6 +46,19 @@ export async function choosePathToSaveHtml() {
   ).filePath;
 }
 
+export async function choosePathToSavePng() {
+  return (
+    await dialog.showSaveDialog({
+      filters: [
+        {
+          name: "PNG",
+          extensions: ["png"],
+        },
+      ],
+    })
+  ).filePath;
+}
+
 export async function choosePathToOpen() {
   return (
     await dialog.showOpenDialog({

@@ -7,6 +7,7 @@ import IpcProxy from "../../ipc/IpcProxy";
 import {
   checkUpdate,
   exportHtml,
+  exportPng,
   newMarkdown,
   openHomePage,
   openMarkdown,
@@ -50,6 +51,10 @@ const createMenu = () =>
               label: "Html",
               click: exportHtml,
             },
+            {
+              label: "Png",
+              click: exportPng,
+            }
           ],
         },
         {
