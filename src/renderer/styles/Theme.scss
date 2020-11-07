@@ -185,3 +185,9 @@ body {
         }
     }
 }
+
+@media print {
+  .Container {
+    height: auto;
+  }
+}

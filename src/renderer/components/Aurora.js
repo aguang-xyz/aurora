@@ -73,6 +73,10 @@ class MarkdownEditor extends React.Component {
 
       const title = this.getTitle();
 
+      const rightPanelDOM = document.getElementsByClassName("RightPanel")[0];
+      const previewWidth = rightPanelDOM.clientWidth;
+      const previewHeight = rightPanelDOM.clientHeight;
+
       IpcProxy.send(IpcEvent.GET_EDITOR_STATUS_REPLY, {
         path,
         savedContent,
@@ -80,6 +84,8 @@ class MarkdownEditor extends React.Component {
         saved,
         theme,
         title,
+        previewWidth,
+        previewHeight,
       });
     });
 

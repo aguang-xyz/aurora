@@ -26,8 +26,11 @@
         "katex": "^0.11.1",
         "marked": "^1.0.0",
         "mermaid": "^8.6.0",
+        "node-fetch": "^2.6.1",
+        "node-forge": "^0.10.0",
         "node-html-parser": "^1.2.19",
         "normalize.css": "^8.0.1",
+        "puppeteer": "^5.4.1",
         "react": "^16.13.1",
         "react-dom": "^16.13.1",
         "react-emoji": "^0.5.0",
@@ -36,11 +39,9 @@
         "react-latex": "^1.6.0",
         "react-markdown": "^4.3.1",
         "remark-math": "^2.0.1",
-        "source-map-support": "^0.5.16",
-        "viz.js": "^2.1.2",
         "serialize-javascript": "^3.1.0",
-        "node-forge": "^0.10.0",
-        "node-fetch": "^2.6.1"
+        "source-map-support": "^0.5.16",
+        "viz.js": "^2.1.2"
     },
     "devDependencies": {
         "@babel/preset-react": "^7.9.4",
