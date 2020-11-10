@@ -17,8 +17,8 @@
         "compile": "electron-webpack",
         "assets": "webpack --config ./conf/assets.config.js src/renderer/index.js --output ./docs/assets/main.js",
         "build": "yarn compile",
-        "release": " yarn build && electron-builder",
-        "release-windows-store": " yarn build && electron-builder --config ./conf/windows-store.yml"
+        "release": " yarn build && electron-builder --config ./conf/build/release.json",
+        "release-store": " yarn build && electron-builder --config ./conf/build/store.json"
     },
     "dependencies": {
         "codemirror": "^5.53.2",

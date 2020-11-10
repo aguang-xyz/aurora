@@ -1,6 +1,8 @@
 {
     "appId": "xyz.aguang.editor.aurora",
     "compression": "maximum",
+    "asar": true,
+    "asarUnpack": "node_modules/puppeteer/.local-chromium/**/*",
     "directories": {
         "buildResources": "resources"
     },

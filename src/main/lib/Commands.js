@@ -224,6 +224,24 @@ export async function exportHtml() {
   await Fs.writeFile(path, html);
 }
 
+async function launchPuppeteerBrowser() {
+  const browserFetcher = Puppeteer.createBrowserFetcher();
+  const localChromiums = await browserFetcher.localRevisions();
+
+  if (!localChromiums.length) {
+    throw new Error("Cannot resolve local chromium drivers.");
+  }
+
+  const { executablePath } =
+    await browserFetcher.revisionInfo(localChromiums[0]);
+
+  console.log(`chromium-exec-path: ${executablePath}`);
+
+  return await Puppeteer.launch({
+    executablePath,
+  });
+}
+
 export async function exportPng() {
   const html = await getHtml();
   const { previewWidth, previewHeight } = await getPreviewShape();
@@ -235,7 +253,7 @@ export async function exportPng() {
 
   console.log(`tmp-html-path: ${tmpHtmlPath}`);
 
-  const browser = await Puppeteer.launch();
+  const browser = await launchPuppeteerBrowser();
   const page = await browser.newPage();
 
   await page.setViewport({
