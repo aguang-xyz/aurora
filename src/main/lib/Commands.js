@@ -227,7 +227,14 @@ export async function exportHtml() {
 const CHROMIUM_REVISION = '809590'
 
 async function launchPuppeteerBrowser() {
-  const browserFetcher = Puppeteer.createBrowserFetcher();
+
+  const cachePath = Path.join(app.getPath("cache"), "aurora-editor", "local-chromium")
+
+  await Fs.mkdir(cachePath, { recursive: true })
+
+  const browserFetcher = Puppeteer.createBrowserFetcher({
+    path: cachePath,
+  });
 
   console.log(`Tries to download chromium driver (revision: ${CHROMIUM_REVISION}).`)
 

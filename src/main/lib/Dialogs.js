@@ -31,6 +31,10 @@ export async function choosePathToSave(name = 'Markdown', extension = "md") {
       ],
     });
 
+  if (!filePath) {
+    return filePath;
+  }
+
   return filePath.endsWith(`.${extension}`) ?
     filePath :
     `${filePath}.${extension}`;
