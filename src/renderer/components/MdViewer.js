@@ -15,6 +15,7 @@ import styles from "../styles/MdViewer.css";
 
 import VizViewer from "./VizViewer";
 import MermaidViewer from "./MermaidViewer";
+import Image from "./basic/Image";
 
 Highlight.configure({
   tabReplace: "  ",
@@ -62,8 +63,6 @@ class MdViewer extends React.Component {
 
     const html = Highlight.fixMarkup(Highlight.highlight(lang, code).value);
 
-    console.log("html:", html);
-
     return (
       <pre>
         <code
@@ -96,14 +95,6 @@ class MdViewer extends React.Component {
 
   renderMermaid(lang, code) {
     return <MermaidViewer theme={this.props.theme} content={code} />;
-  }
-
-  renderImage(alt, src) {
-    if (this.props.path) {
-      src = Url.resolve("file://" + this.props.path, src);
-    }
-
-    return <img src={src} alt={alt} />;
   }
 
   renderText(text) {
@@ -159,7 +150,12 @@ class MdViewer extends React.Component {
 
           code: ({ language, value }) => this.renderCode(value, language),
 
-          image: ({ alt, src }) => this.renderImage(alt, src),
+          image: ({ alt, src }) => (
+            <Image
+              alt={alt}
+              src={this.props.path ? Url.resolve("file://" + this.props.path, src) : src}
+            />
+          ),
 
           text: ({ value }) => this.renderText(value),
 
