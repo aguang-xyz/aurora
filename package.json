@@ -30,7 +30,7 @@
         "node-forge": "^0.10.0",
         "node-html-parser": "^1.2.19",
         "normalize.css": "^8.0.1",
-        "puppeteer": "^5.4.1",
+        "puppeteer-core": "^5.5.0",
         "react": "^16.13.1",
         "react-dom": "^16.13.1",
         "react-emoji": "^0.5.0",
