@@ -255,6 +255,7 @@ async function launchPuppeteerBrowser() {
 
   return await Puppeteer.launch({
     executablePath,
+    args: ['--no-sandbox', '--disable-setuid-sandbox'],
   });
 }
 
