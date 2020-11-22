@@ -289,6 +289,12 @@ export async function exportPng() {
 
   await page.goto(`file://${tmpHtmlPath}`);
 
+  await page.waitForSelector('#app>.Container', {
+    visible: true,
+  });
+
+  await new Promise(resolve => setTimeout(resolve, 1500));
+
   console.log(`Choosing path to save PNG file.`)
 
   const path = await choosePathToSavePng();
