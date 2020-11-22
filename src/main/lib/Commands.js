@@ -2,7 +2,7 @@ import { app, shell } from "electron";
 import { promises as Fs } from "fs";
 import { tmpdir } from "os";
 import Path from "path";
-import Puppeteer from 'puppeteer';
+import Puppeteer from 'puppeteer-core';
 
 import packageInfo from "../../../package.json";
 import IpcEvent from "../../ipc/IpcEvent";
@@ -224,8 +224,17 @@ export async function exportHtml() {
   await Fs.writeFile(path, html);
 }
 
+const CHROMIUM_REVISION = '809590'
+
 async function launchPuppeteerBrowser() {
   const browserFetcher = Puppeteer.createBrowserFetcher();
+
+  console.log(`Tries to download chromium driver (revision: ${CHROMIUM_REVISION}).`)
+
+  await browserFetcher.download(CHROMIUM_REVISION);
+
+  console.log(`Finished chromium driver downloading.`)
+
   const localChromiums = await browserFetcher.localRevisions();
 
   if (!localChromiums.length) {
@@ -235,7 +244,7 @@ async function launchPuppeteerBrowser() {
   const { executablePath } =
     await browserFetcher.revisionInfo(localChromiums[0]);
 
-  console.log(`chromium-exec-path: ${executablePath}`);
+  console.log(`Chromium driver path: ${executablePath}.`)
 
   return await Puppeteer.launch({
     executablePath,
@@ -251,18 +260,29 @@ export async function exportPng() {
 
   await Fs.writeFile(tmpHtmlPath, html);
 
-  console.log(`tmp-html-path: ${tmpHtmlPath}`);
+  console.log(`Temporary HTML path: ${tmpHtmlPath}.`);
+
+  console.log(`Starts HTML rendering.`)
 
   const browser = await launchPuppeteerBrowser();
+
+  console.log(`Starts to create browser page.`)
+
   const page = await browser.newPage();
+
+  console.log(`Setting viewport.`)
 
   await page.setViewport({
     width: previewWidth,
     height: previewHeight,
   })
 
+  console.log(`Visiting file://${tmpHtmlPath}.`)
+
   await page.goto(`file://${tmpHtmlPath}`);
-  
+
+  console.log(`Choosing path to save PNG file.`)
+
   const path = await choosePathToSavePng();
   
   await page.screenshot({

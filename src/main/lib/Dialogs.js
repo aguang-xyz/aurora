@@ -20,43 +20,28 @@ export async function confirmToSave(path) {
   ).response;
 }
 
-export async function choosePathToSave() {
-  return (
+export async function choosePathToSave(name = 'Markdown', extension = "md") {
+  const { filePath } =
     await dialog.showSaveDialog({
       filters: [
         {
-          name: "Markdown",
-          extensions: ["md"],
+          name,
+          extensions: [extension],
         },
       ],
-    })
-  ).filePath;
+    });
+
+  return filePath.endsWith(`.${extension}`) ?
+    filePath :
+    `${filePath}.${extension}`;
 }
 
 export async function choosePathToSaveHtml() {
-  return (
-    await dialog.showSaveDialog({
-      filters: [
-        {
-          name: "HTML",
-          extensions: ["html"],
-        },
-      ],
-    })
-  ).filePath;
+  return await choosePathToSave('HTML', 'html')
 }
 
 export async function choosePathToSavePng() {
-  return (
-    await dialog.showSaveDialog({
-      filters: [
-        {
-          name: "PNG",
-          extensions: ["png"],
-        },
-      ],
-    })
-  ).filePath;
+  return await choosePathToSave('PNG', 'png')
 }
 
 export async function choosePathToOpen() {
