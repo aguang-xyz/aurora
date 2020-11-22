@@ -7,6 +7,8 @@ import IpcProxy from "../../ipc/IpcProxy";
 import MdEditor from "./MdEditor";
 import MdViewer from "./MdViewer";
 
+import { getSetting, setSetting } from "../libs/Settings";
+
 class MarkdownEditor extends React.Component {
   constructor(props) {
     super(props);
@@ -26,6 +28,10 @@ class MarkdownEditor extends React.Component {
   }
 
   componentDidMount() {
+
+    getSetting('theme', 'light')
+      .then(theme => this.setState({ theme }));
+
     document.addEventListener("keydown", (e) => {
       console.log(e.which, e.shiftKey);
 
@@ -99,6 +105,10 @@ class MarkdownEditor extends React.Component {
         if (this.state.editingContent != content) {
           this.mdEditorRef && this.mdEditorRef.current.setValue(content);
         }
+      }
+
+      if (theme) {
+        setSetting('theme', theme);
       }
 
       this.setState({
